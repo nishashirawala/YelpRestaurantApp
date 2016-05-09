@@ -1,4 +1,4 @@
-package yelp;
+package com.yelprestaurantapp.yelp;
 
 
 import org.scribe.builder.api.DefaultApi10a;

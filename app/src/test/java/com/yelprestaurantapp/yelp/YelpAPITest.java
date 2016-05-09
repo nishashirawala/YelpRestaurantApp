@@ -6,8 +6,6 @@ import com.yelprestaurantapp.TestConstants;
 import org.junit.Before;
 import org.junit.Test;
 
-import yelp.YelpAPI;
-
 import static org.junit.Assert.assertNotNull;
 
 public class YelpAPITest {

@@ -1,4 +1,4 @@
-package yelp;
+package com.yelprestaurantapp.yelp;
 
 import org.scribe.builder.ServiceBuilder;
 import org.scribe.model.OAuthRequest;
