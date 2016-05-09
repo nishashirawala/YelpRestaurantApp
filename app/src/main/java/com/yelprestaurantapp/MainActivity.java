@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        RestaurantServiceAsyncTask restaurantServiceAsyncTask = new RestaurantServiceAsyncTask(this);
+        RestaurantServiceAsyncTask restaurantServiceAsyncTask = new RestaurantServiceAsyncTask();
         restaurantServiceAsyncTask.execute();
     }
 
@@ -34,7 +34,10 @@ public class MainActivity extends AppCompatActivity {
         SortableTableView<Restaurant> sortableTableView = (SortableTableView<Restaurant>) findViewById(R.id.tableView);
         sortableTableView.setDataAdapter(new RestaurantTableDataAdapter(this, list));
         sortableTableView.setColumnComparator(0, new RestaurantNameComparator());
-        sortableTableView.setHeaderAdapter(new SimpleTableHeaderAdapter(this, new String[]{"NAME", "ADDRESS"}));
+        sortableTableView.setColumnComparator(0, new RestaurantNameComparator());
+        String nameHeader = getResources().getString(R.string.nameHeader);
+        String addressHeader = getResources().getString(R.string.addressHeader);
+        sortableTableView.setHeaderAdapter(new SimpleTableHeaderAdapter(this, new String[]{nameHeader, addressHeader}));
         int colorEvenRows = ContextCompat.getColor(this, R.color.white);
         int colorOddRows = ContextCompat.getColor(this, R.color.ltgray);
         sortableTableView.setDataRowColorizer(TableDataRowColorizers.alternatingRows(colorEvenRows, colorOddRows));
@@ -50,16 +53,12 @@ public class MainActivity extends AppCompatActivity {
 
     class RestaurantServiceAsyncTask extends AsyncTask {
 
-        private Context mContext;
-
-        public RestaurantServiceAsyncTask(Context context) {
-            mContext = context;
-        }
-
         @Override
         protected Object doInBackground(Object[] params) {
             RestaurantService service = new RestaurantService();
-            List<Restaurant> restaurantList = service.getRestaurants("toronto", "20", mContext);
+            String location = getResources().getString(R.string.searchLocation);
+            String limit = getResources().getString(R.string.limit);
+            List<Restaurant> restaurantList = service.getRestaurants(location, limit);
             return restaurantList;
         }
 

@@ -20,17 +20,15 @@ import static org.mockito.Mockito.mock;
 public class RestaurantServiceTest {
 
     private RestaurantService fixture;
-    Context mMockContext;
 
     @Before
     public void setUp() throws Exception {
-        mMockContext = mock(Context.class);
         fixture = new RestaurantService();
     }
 
     @Test
     public void testGetRestaurants() {
-        List<Restaurant> restaurantList = fixture.getRestaurants("toronto", "10", mMockContext);
+        List<Restaurant> restaurantList = fixture.getRestaurants("toronto", "10");
         Assert.assertNotNull(restaurantList);
         Assert.assertEquals(10, restaurantList.size());
         for (Restaurant restaurant : restaurantList) {
@@ -45,10 +43,13 @@ public class RestaurantServiceTest {
         RestaurantDetail detail = fixture.getRestaurantDetails("under-the-table-restaurant-toronto");
         Assert.assertNotNull(detail);
         Assert.assertNotNull(detail.getName());
+        Assert.assertEquals("Under The Table Restaurant", detail.getName());
         Assert.assertNotNull(detail.getDisplayAddress());
         Assert.assertNotNull(detail.getImageUrl());
         Assert.assertNotNull(detail.getCategories());
     }
+
+
 
 
 }

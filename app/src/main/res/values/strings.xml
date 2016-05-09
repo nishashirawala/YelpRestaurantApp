@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">YelpRestaurantApp</string>
+    <string name="nameHeader">Name</string>
+    <string name="addressHeader">Address</string>
+    <string name="searchLocation">Toronto</string>
+    <string name="limit">10</string>
 </resources>

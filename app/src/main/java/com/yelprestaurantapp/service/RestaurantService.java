@@ -22,7 +22,7 @@ public class RestaurantService {
 
     private static String term = "restaurant";
 
-    public List<Restaurant> getRestaurants(String location, String limit, Context context) {
+    public List<Restaurant> getRestaurants(String location, String limit) {
         List<Restaurant> restaurants = new ArrayList<Restaurant>();
         YelpAPI yelp = YelpAPI.getYelp();
         String response = yelp.searchForBusinessesByLocation(term, location, limit);
@@ -93,8 +93,8 @@ public class RestaurantService {
 
             JSONArray categoryJsonArray = business.getJSONArray("categories");
             List<Category> categories = new ArrayList<>();
-            for (int i = 0; i <= categoryJsonArray.length(); i++) {
-                JSONArray catJsonArr = (JSONArray) categoryJsonArray.get(0);
+            for (int i = 0; i < categoryJsonArray.length(); i++) {
+                JSONArray catJsonArr = (JSONArray) categoryJsonArray.get(i);
                 Category category = new Category();
                 category.setName(catJsonArr.getString(0));
                 category.setAlias(catJsonArr.getString(1));
