@@ -15,8 +15,18 @@ import com.yelprestaurantapp.bean.Review;
 import com.yelprestaurantapp.bean.Reviewer;
 import com.yelprestaurantapp.service.RestaurantService;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.net.URLConnection;
+import java.security.cert.X509Certificate;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -49,7 +59,7 @@ public class DetailActivity extends AppCompatActivity {
         userName.setText(reviewer.getUserName());
 
         new DownloadImageTask((ImageView) findViewById(R.id.userImage))
-                .execute( detail.getReview().getReviewer().getUserImageUrl());
+                .execute(detail.getReview().getReviewer().getUserImageUrl());
     }
 
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
@@ -60,16 +70,8 @@ public class DetailActivity extends AppCompatActivity {
         }
 
         protected Bitmap doInBackground(String... urls) {
-            String urldisplay = urls[0];
-            Bitmap mIcon11 = null;
-            try {
-                InputStream in = new URL(urldisplay).openStream();
-                mIcon11 = BitmapFactory.decodeStream(in);
-            } catch (Exception e) {
-                Log.e("Error", e.getMessage());
-                e.printStackTrace();
-            }
-            return mIcon11;
+            String urlDisplay = urls[0];
+            return downloadImage(urlDisplay);
         }
 
         protected void onPostExecute(Bitmap result) {
@@ -99,4 +101,65 @@ public class DetailActivity extends AppCompatActivity {
             DetailActivity.this.updateUI(restaurantDetail);
         }
     }
+
+    private Bitmap downloadImage(String url) {
+        Bitmap bitmap = null;
+        InputStream stream = null;
+        BitmapFactory.Options bmOptions = new BitmapFactory.Options();
+        bmOptions.inSampleSize = 1;
+
+        try {
+            stream = getHttpConnection(url);
+            bitmap = BitmapFactory.
+                    decodeStream(stream, null, bmOptions);
+            stream.close();
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
+        return bitmap;
+    }
+
+    private InputStream getHttpConnection(String urlString) throws IOException {
+        InputStream stream = null;
+        URL url = new URL(urlString);
+
+        SSLContext ctx = null;
+        try {
+            ctx = SSLContext.getInstance("TLS");
+
+            ctx.init(null, new TrustManager[]{
+                    new X509TrustManager() {
+                        public void checkClientTrusted(X509Certificate[] chain, String authType) {}
+                        public void checkServerTrusted(X509Certificate[] chain, String authType) {}
+                        public X509Certificate[] getAcceptedIssuers() {
+                            return new X509Certificate[]{};
+                        }
+                    }
+            }, null);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+
+            HttpsURLConnection.setDefaultHostnameVerifier(new HostnameVerifier() {
+                @Override
+                public boolean verify(String hostname, SSLSession session) {
+                    return true;
+                }
+            });
+            HttpsURLConnection.setDefaultSSLSocketFactory(ctx.getSocketFactory());
+            URLConnection connection = url.openConnection();
+            HttpsURLConnection httpConnection = (HttpsURLConnection) connection;
+            httpConnection.setRequestMethod("GET");
+            httpConnection.connect();
+
+            if (httpConnection.getResponseCode() == HttpsURLConnection.HTTP_OK) {
+                stream = httpConnection.getInputStream();
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return stream;
+    }
+
 }
