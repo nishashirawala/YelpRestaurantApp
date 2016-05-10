@@ -3,12 +3,14 @@ package com.yelprestaurantapp;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.yelprestaurantapp.bean.Category;
@@ -44,9 +46,7 @@ public class DetailActivity extends AppCompatActivity {
         if(businessID != null) {
             new RestaurantDetailServiceAsyncTask(businessID).execute();
         } else {
-            TextView errorText = (TextView) findViewById(R.id.errorText);
-            errorText.setText("Unable to find restaurant detail. Restaurant Id is null");
-            Log.e("Error", "Business Id can not be null");
+            showErrorMsg(getString(R.string.null_business_id));
         }
     }
 
@@ -73,28 +73,32 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     public void updateUI(RestaurantDetail detail) {
-        TextView resNameTextView = (TextView) findViewById(R.id.restaurantName);
-        resNameTextView.setText(detail.getName());
-        List<Category> categoryList = detail.getCategories();
-        String categoryStr = createCategoryString(categoryList);
-        TextView catTextView = (TextView) findViewById(R.id.categoryTextView);
-        catTextView.setText(categoryStr);
-        TextView addressTextView = (TextView) findViewById(R.id.restaurantAddress);
-        addressTextView.setText(detail.getDisplayAddress());
-        new DownloadHttpsImageTask((ImageView) findViewById(R.id.restaurantImage)).execute(detail.getImageUrl());
-        TextView ratingTextView = (TextView) findViewById(R.id.ratingTextView);
-        ratingTextView.setText(String.valueOf(detail.getRating()));
-        Review review = detail.getReview();
-        TextView reviewText = (TextView) findViewById(R.id.reviewText);
-        reviewText.setText(review.getExcerpt());
-        TextView userName = (TextView) findViewById(R.id.userName);
-        Reviewer reviewer = review.getReviewer();
-        userName.setText(reviewer.getUserName());
-        String userImgUrl = detail.getReview().getReviewer().getUserImageUrl();
-        if (userImgUrl.startsWith("http://")) {
-            new DownloadImageTask((ImageView) findViewById(R.id.userImage)).execute(userImgUrl);
+        if(detail != null) {
+            TextView resNameTextView = (TextView) findViewById(R.id.restaurantName);
+            resNameTextView.setText(detail.getName());
+            List<Category> categoryList = detail.getCategories();
+            String categoryStr = createCategoryString(categoryList);
+            TextView catTextView = (TextView) findViewById(R.id.categoryTextView);
+            catTextView.setText(categoryStr);
+            TextView addressTextView = (TextView) findViewById(R.id.restaurantAddress);
+            addressTextView.setText(detail.getDisplayAddress());
+            new DownloadHttpsImageTask((ImageView) findViewById(R.id.restaurantImage)).execute(detail.getImageUrl());
+            TextView ratingTextView = (TextView) findViewById(R.id.ratingTextView);
+            ratingTextView.setText(String.valueOf(detail.getRating()));
+            Review review = detail.getReview();
+            TextView reviewText = (TextView) findViewById(R.id.reviewText);
+            reviewText.setText(review.getExcerpt());
+            TextView userName = (TextView) findViewById(R.id.userName);
+            Reviewer reviewer = review.getReviewer();
+            userName.setText(reviewer.getUserName());
+            String userImgUrl = detail.getReview().getReviewer().getUserImageUrl();
+            if (userImgUrl.startsWith("http://")) {
+                new DownloadImageTask((ImageView) findViewById(R.id.userImage)).execute(userImgUrl);
+            } else {
+                new DownloadHttpsImageTask((ImageView) findViewById(R.id.userImage)).execute(userImgUrl);
+            }
         } else {
-            new DownloadHttpsImageTask((ImageView) findViewById(R.id.userImage)).execute(userImgUrl);
+            showErrorMsg(getString(R.string.null_business_detail));
         }
     }
 
@@ -155,9 +159,15 @@ public class DetailActivity extends AppCompatActivity {
             bmImage.setImageBitmap(result);
         }
     }
-
-
-
+    private void showErrorMsg(String errorMsg) {
+        RelativeLayout layout = (RelativeLayout) findViewById(R.id.detailLayout);
+        layout.removeAllViews();
+        TextView errorTextView = new TextView(this);
+        errorTextView.setTextColor(Color.RED);
+        errorTextView.setText(errorMsg);
+        layout.addView(errorTextView);
+        Log.e("Error", errorMsg);
+    }
 
     private Bitmap downloadImage(String url) {
         Bitmap bitmap = null;
