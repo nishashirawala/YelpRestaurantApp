@@ -50,6 +50,9 @@ public class DetailActivity extends AppCompatActivity {
         new DownloadImageTask((ImageView) findViewById(R.id.restaurantImage))
                 .execute(detail.getImageUrl());
 
+        TextView ratingTextView = (TextView) findViewById(R.id.ratingTextView);
+        ratingTextView.setText(String.valueOf(detail.getRating()));
+
         Review review = detail.getReview();
         TextView reviewText = (TextView) findViewById(R.id.reviewText);
         reviewText.setText(review.getExcerpt());
@@ -58,8 +61,8 @@ public class DetailActivity extends AppCompatActivity {
         Reviewer reviewer = review.getReviewer();
         userName.setText(reviewer.getUserName());
 
-        new DownloadImageTask((ImageView) findViewById(R.id.userImage))
-                .execute(detail.getReview().getReviewer().getUserImageUrl());
+        /*new DownloadImageTask((ImageView) findViewById(R.id.userImage))
+                .execute(detail.getReview().getReviewer().getUserImageUrl());*/
     }
 
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
@@ -112,7 +115,9 @@ public class DetailActivity extends AppCompatActivity {
             stream = getHttpConnection(url);
             bitmap = BitmapFactory.
                     decodeStream(stream, null, bmOptions);
-            stream.close();
+            if(stream != null) {
+                stream.close();
+            }
         } catch (IOException e1) {
             e1.printStackTrace();
         }

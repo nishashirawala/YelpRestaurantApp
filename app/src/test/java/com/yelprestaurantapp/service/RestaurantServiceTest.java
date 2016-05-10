@@ -48,6 +48,8 @@ public class RestaurantServiceTest {
         Assert.assertNotNull(detail.getDisplayAddress());
         Assert.assertNotNull(detail.getImageUrl());
         Assert.assertNotNull(detail.getCategories());
+        Assert.assertNotNull(detail.getRating());
+        Assert.assertNotNull(detail.getRatingImgUrl());
     }
 
 

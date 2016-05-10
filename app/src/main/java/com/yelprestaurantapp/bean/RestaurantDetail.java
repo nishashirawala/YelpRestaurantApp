@@ -9,6 +9,8 @@ public class RestaurantDetail {
     private String imageUrl;
     private List<Category> categories;
     private Review review;
+    private double rating;
+    private String ratingImgUrl;
 
     public String getId() {
         return id;
@@ -56,6 +58,22 @@ public class RestaurantDetail {
 
     public void setReview(Review review) {
         this.review = review;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
+    public String getRatingImgUrl() {
+        return ratingImgUrl;
+    }
+
+    public void setRatingImgUrl(String ratingImgUrl) {
+        this.ratingImgUrl = ratingImgUrl;
     }
 
 }

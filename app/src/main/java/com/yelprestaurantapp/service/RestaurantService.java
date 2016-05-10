@@ -115,6 +115,9 @@ public class RestaurantService {
             }
             restaurantDetail.setCategories(categories);
 
+            restaurantDetail.setRating(Double.valueOf(business.getInt("rating")));
+            restaurantDetail.setRatingImgUrl(business.getString("rating_img_url"));
+
         } catch (Exception e) {
             e.printStackTrace();
         }
