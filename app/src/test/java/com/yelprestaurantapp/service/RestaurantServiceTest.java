@@ -3,6 +3,7 @@ package com.yelprestaurantapp.service;
 
 import android.content.Context;
 
+import com.yelprestaurantapp.bean.Category;
 import com.yelprestaurantapp.bean.Restaurant;
 import com.yelprestaurantapp.bean.RestaurantDetail;
 
@@ -28,7 +29,7 @@ public class RestaurantServiceTest {
 
     @Test
     public void testGetRestaurants() {
-        List<Restaurant> restaurantList = fixture.getRestaurants("toronto", "10");
+        List<Restaurant> restaurantList = fixture.getRestaurants("Financial District, toronto", "10");
         Assert.assertNotNull(restaurantList);
         Assert.assertEquals(10, restaurantList.size());
         for (Restaurant restaurant : restaurantList) {
@@ -50,6 +51,28 @@ public class RestaurantServiceTest {
     }
 
 
+    @Test
+    public void testSearchForBusinessesByLatLon() {
+        List<Restaurant> restaurantList = fixture.getRestaurants("43.6611", "-79.42868", "20");
+        Assert.assertNotNull(restaurantList);
+        for (Restaurant restaurant : restaurantList) {
+            Assert.assertNotNull(restaurant.getId());
+            Assert.assertNotNull(restaurant.getName());
+            Assert.assertNotNull(restaurant.getAddress());
+        }
+    }
 
 
+    @Test
+    public void testGetRestaurants_byCategory() {
+        RestaurantDetail detail = fixture.getRestaurantDetails("nazareth-restaurant-toronto");
+        Assert.assertNotNull(detail);
+        Assert.assertNotNull(detail.getCategories());
+        Assert.assertEquals("Nazareth Restaurant", detail.getName());
+        Assert.assertEquals(2, detail.getCategories().size());
+        Category c1 =  detail.getCategories().get(0);
+        Category c2 =  detail.getCategories().get(1);
+        Assert.assertEquals("Ethiopian", c1.getName());
+        Assert.assertEquals("Vegetarian", c2.getName());
+    }
 }

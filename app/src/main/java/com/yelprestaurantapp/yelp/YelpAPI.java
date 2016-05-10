@@ -54,4 +54,13 @@ public class YelpAPI {
         return response.getBody();
     }
 
+    public String searchForBusinessesByLatLon(String lat, String lon, String term, String limit) {
+        OAuthRequest request = new OAuthRequest(Verb.GET, SEARCH_URL);
+        request.addQuerystringParameter("term", term);
+        request.addQuerystringParameter("ll", lat + "," + lon);
+        request.addQuerystringParameter("limit", limit);
+        this.service.signRequest(this.accessToken, request);
+        Response response = request.send();
+        return response.getBody();
+    }
 }

@@ -26,6 +26,20 @@ public class RestaurantService {
         List<Restaurant> restaurants = new ArrayList<Restaurant>();
         YelpAPI yelp = YelpAPI.getYelp();
         String response = yelp.searchForBusinessesByLocation(term, location, limit);
+        System.out.println(response.toString());
+        try {
+            createRestaurantListFromJSON(restaurants, response);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return restaurants;
+    }
+
+    public List<Restaurant> getRestaurants(String lat, String lon, String limit) {
+        List<Restaurant> restaurants = new ArrayList<Restaurant>();
+        YelpAPI yelp = YelpAPI.getYelp();
+        String response = yelp.searchForBusinessesByLatLon(lat, lon, term, limit);
+        System.out.println(response.toString());
         try {
             createRestaurantListFromJSON(restaurants, response);
         } catch (JSONException e) {
@@ -57,7 +71,6 @@ public class RestaurantService {
     public RestaurantDetail getRestaurantDetails(String businessId) {
         YelpAPI yelp = YelpAPI.getYelp();
         String response = yelp.searchBusinessDetail(businessId);
-
         RestaurantDetail restaurantDetail = new RestaurantDetail();
         try {
 
