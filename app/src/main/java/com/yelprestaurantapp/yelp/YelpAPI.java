@@ -32,15 +32,6 @@ public class YelpAPI {
         this.accessToken = new Token(token, tokenSecret);
     }
 
-    public String search(String term, String location) {
-        OAuthRequest request = new OAuthRequest(Verb.GET, SEARCH_URL);
-        request.addQuerystringParameter("term", term);
-        request.addQuerystringParameter("location", location);
-        this.service.signRequest(this.accessToken, request);
-        Response response = request.send();
-        return response.getBody();
-    }
-
     public String searchForBusinessesByLocation(String term, String location, String limit) {
         OAuthRequest request = new OAuthRequest(Verb.GET, SEARCH_URL);
         request.addQuerystringParameter("term", term);

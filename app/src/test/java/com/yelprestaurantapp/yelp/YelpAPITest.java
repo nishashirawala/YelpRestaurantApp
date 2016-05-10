@@ -1,8 +1,6 @@
 package com.yelprestaurantapp.yelp;
 
 
-import com.yelprestaurantapp.TestConstants;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,12 +12,12 @@ public class YelpAPITest {
 
     @Before
     public void setup() {
-        fixture = new YelpAPI(TestConstants.consumerKey, TestConstants.consumerSecret, TestConstants.token, TestConstants.tokenSecret);
+        fixture = YelpAPI.getYelp();
     }
 
     @Test
     public void testSearchForBusinessesByLocation() throws Exception {
-        String response = fixture.search("restaurants", "toronto");
+        String response = fixture.searchForBusinessesByLocation("restaurants", "toronto", "10");
         assertNotNull(response);
     }
 
@@ -27,5 +25,10 @@ public class YelpAPITest {
     public void testGetBusinessDetail() throws Exception {
         String response = fixture.searchBusinessDetail("corrados-toronto");
         assertNotNull(response);
+    }
+
+    @Test
+    public void testSearchForBusinessesByLatLon() throws Exception {
+        String response = fixture.searchForBusinessesByLatLon("43.648742", "-79.387199", "restaurants", "10");
     }
 }
