@@ -9,20 +9,25 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.restaurantapp.DetailActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/errorText"
+        android:textColor="@android:color/holo_red_light"/>
+
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
         android:scaleType="fitXY"
         android:id="@+id/restaurantImage"
         android:layout_alignTop="@+id/restaurantAddress"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Name"
+        android:text="Restaurant Name"
         android:textColor="@android:color/holo_red_light"
         android:id="@+id/restaurantName"
         android:layout_alignParentTop="true"
@@ -36,10 +41,10 @@
         android:text="Address"
         android:textColor="@android:color/holo_green_dark"
         android:id="@+id/restaurantAddress"
-        android:layout_below="@+id/restaurantName"
+        android:layout_below="@+id/categoryTextView"
         android:layout_toRightOf="@+id/restaurantImage"
         android:layout_marginTop="28dp"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginLeft="12dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -48,26 +53,27 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Recommended Reviews"
         android:id="@+id/recommenedReviews"
+        android:layout_marginBottom="26dp"
         android:layout_above="@+id/userImage"
-        android:layout_below="@+id/overallRatingTextView"/>
+        android:layout_alignParentStart="true" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/userImage"
-        android:padding="10dp"
-        android:layout_alignTop="@+id/reviewText"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:padding="8dp"
+        android:layout_above="@+id/userName"
+        android:layout_toEndOf="@+id/errorText" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
+        android:text="Reviewer Name"
         android:id="@+id/userName"
-        android:layout_below="@+id/userImage"
-        android:layout_alignParentLeft="true"
+        android:textColor="@color/material_blue_grey_800"
+        android:layout_marginBottom="53dp"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true" />
 
     <TextView
@@ -76,9 +82,8 @@
         android:ems="14"
         android:id="@+id/reviewText"
         android:layout_marginLeft="20dp"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/userName"
-        android:layout_marginBottom="93dp" />
+        android:layout_below="@+id/recommenedReviews"
+        android:layout_toEndOf="@+id/userName" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -87,11 +92,9 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Overall Rating"
         android:id="@+id/overallRatingTextView"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="27dp"
         android:layout_below="@+id/restaurantImage"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/restaurantAddress" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="match_parent"
@@ -102,4 +105,15 @@
         android:layout_alignTop="@+id/overallRatingTextView"
         android:layout_alignStart="@+id/restaurantAddress"
         android:layout_marginStart="29dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Categories"
+        android:id="@+id/categoryTextView"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
+        android:layout_below="@+id/restaurantName"
+        android:layout_toEndOf="@+id/errorText" />
 </RelativeLayout>
