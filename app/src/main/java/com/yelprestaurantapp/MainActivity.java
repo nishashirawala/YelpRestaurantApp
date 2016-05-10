@@ -39,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
             sortableTableView.setDataAdapter(new RestaurantTableDataAdapter(this, list));
             sortableTableView.setColumnComparator(0, new RestaurantNameComparator());
             sortableTableView.setColumnComparator(0, new RestaurantNameComparator());
-            String nameHeader = getResources().getString(R.string.nameHeader);
-            String addressHeader = getResources().getString(R.string.addressHeader);
+            String nameHeader = getString(R.string.nameHeader);
+            String addressHeader = getString(R.string.addressHeader);
             sortableTableView.setHeaderAdapter(new SimpleTableHeaderAdapter(this, new String[]{nameHeader, addressHeader}));
             int colorEvenRows = ContextCompat.getColor(this, R.color.white);
             int colorOddRows = ContextCompat.getColor(this, R.color.ltgray);
@@ -63,12 +63,14 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected Object doInBackground(Object[] params) {
             RestaurantService service = new RestaurantService();
-            String location = getResources().getString(R.string.searchLocation);
-            String limit = getResources().getString(R.string.limit);
+            String location = getString(R.string.searchLocation);
+            String limit = getString(R.string.limit);
+            String lat = getString(R.string.lat);
+            String lon = getString(R.string.lon);
             List<Restaurant> restaurantList = new ArrayList<Restaurant>();
             try {
                 // restaurantList = service.getRestaurants(location, limit);
-                restaurantList = service.getRestaurants("43.648742", "-79.387199", limit);
+                restaurantList = service.getRestaurants(lat, lon, limit);
                 return restaurantList;
             } catch (Exception e) {
                 Log.e("Error", e.getMessage());
