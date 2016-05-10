@@ -26,7 +26,6 @@ public class RestaurantService {
         List<Restaurant> restaurants = new ArrayList<Restaurant>();
         YelpAPI yelp = YelpAPI.getYelp();
         String response = yelp.searchForBusinessesByLocation(term, location, limit);
-        System.out.println(response.toString());
         try {
             createRestaurantListFromJSON(restaurants, response);
         } catch (JSONException e) {
