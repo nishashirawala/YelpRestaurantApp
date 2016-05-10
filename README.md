@@ -1,5 +1,5 @@
 # YelpRestaurantApp
-Android app to show restaurant list from yelp
+Android app to show restaurant list from yelp. Project is created with android-studio, android api 23.
 
 - Insert your yelp key and token details in YelpAPI.java to run this project
  
