@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">YelpRestaurantApp</string>
+    <string name="app_name">Restaurant Application</string>
     <string name="nameHeader">Name</string>
     <string name="addressHeader">Address</string>
     <string name="searchLocation">Toronto</string>

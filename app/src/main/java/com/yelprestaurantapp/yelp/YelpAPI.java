@@ -1,5 +1,9 @@
 package com.yelprestaurantapp.yelp;
 
+import android.content.Context;
+
+import com.yelprestaurantapp.R;
+
 import org.scribe.builder.ServiceBuilder;
 import org.scribe.model.OAuthRequest;
 import org.scribe.model.Response;
@@ -29,7 +33,7 @@ public class YelpAPI {
     }
 
     public String search(String term, String location) {
-        OAuthRequest request = new OAuthRequest(Verb.GET, "http://api.yelp.com/v2/search");
+        OAuthRequest request = new OAuthRequest(Verb.GET, SEARCH_URL);
         request.addQuerystringParameter("term", term);
         request.addQuerystringParameter("location", location);
         this.service.signRequest(this.accessToken, request);
