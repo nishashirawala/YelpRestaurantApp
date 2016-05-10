@@ -165,6 +165,7 @@ public class DetailActivity extends AppCompatActivity {
         TextView errorTextView = new TextView(this);
         errorTextView.setTextColor(Color.RED);
         errorTextView.setText(errorMsg);
+        errorTextView.setPadding(10, 10, 10, 10);
         layout.addView(errorTextView);
         Log.e("Error", errorMsg);
     }

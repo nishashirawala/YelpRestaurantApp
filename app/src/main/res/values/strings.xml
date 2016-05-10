@@ -5,6 +5,7 @@
     <string name="searchLocation">Toronto</string>
     <string name="limit">10</string>
 
+    <string name="empty_restaurant_list">Unable to find restaurants from yelp</string>
     <string name="null_business_id">Unable to find restaurant detail. Restaurant Id is null</string>
     <string name="null_business_detail">Unable to find restaurant detail</string>
 </resources>
