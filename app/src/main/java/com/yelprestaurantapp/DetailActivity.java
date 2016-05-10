@@ -47,7 +47,7 @@ public class DetailActivity extends AppCompatActivity {
         TextView addressTextView = (TextView) findViewById(R.id.restaurantAddress);
         addressTextView.setText(detail.getDisplayAddress());
 
-        new DownloadImageTask((ImageView) findViewById(R.id.restaurantImage))
+        new DownloadHttpsImageTask((ImageView) findViewById(R.id.restaurantImage))
                 .execute(detail.getImageUrl());
 
         TextView ratingTextView = (TextView) findViewById(R.id.ratingTextView);
@@ -61,14 +61,21 @@ public class DetailActivity extends AppCompatActivity {
         Reviewer reviewer = review.getReviewer();
         userName.setText(reviewer.getUserName());
 
-        /*new DownloadImageTask((ImageView) findViewById(R.id.userImage))
-                .execute(detail.getReview().getReviewer().getUserImageUrl());*/
+        String userImgUrl = detail.getReview().getReviewer().getUserImageUrl();
+        if (userImgUrl.startsWith("http://")) {
+            new DownloadImageTask((ImageView) findViewById(R.id.userImage))
+                    .execute(userImgUrl);
+
+        } else {
+            new DownloadHttpsImageTask((ImageView) findViewById(R.id.userImage))
+                    .execute(userImgUrl);
+        }
     }
 
-    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+    private class DownloadHttpsImageTask extends AsyncTask<String, Void, Bitmap> {
         ImageView bmImage;
 
-        public DownloadImageTask(ImageView bmImage) {
+        public DownloadHttpsImageTask(ImageView bmImage) {
             this.bmImage = bmImage;
         }
 
@@ -81,6 +88,32 @@ public class DetailActivity extends AppCompatActivity {
             bmImage.setImageBitmap(result);
         }
     }
+
+    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+        ImageView bmImage;
+
+        public DownloadImageTask(ImageView bmImage) {
+            this.bmImage = bmImage;
+        }
+
+        protected Bitmap doInBackground(String... urls) {
+            String urldisplay = urls[0];
+            Bitmap mIcon11 = null;
+            try {
+                InputStream in = new URL(urldisplay).openStream();
+                mIcon11 = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return mIcon11;
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            bmImage.setImageBitmap(result);
+        }
+    }
+
 
     private class RestaurantDetailServiceAsyncTask extends AsyncTask {
 
