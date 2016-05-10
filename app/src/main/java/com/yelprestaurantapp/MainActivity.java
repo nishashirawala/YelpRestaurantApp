@@ -1,21 +1,19 @@
 package com.yelprestaurantapp;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.yelprestaurantapp.adapter.RestaurantTableDataAdapter;
 import com.yelprestaurantapp.bean.Restaurant;
 import com.yelprestaurantapp.listener.RestaurantDataClickListener;
 import com.yelprestaurantapp.service.RestaurantService;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -67,8 +65,14 @@ public class MainActivity extends AppCompatActivity {
             RestaurantService service = new RestaurantService();
             String location = getResources().getString(R.string.searchLocation);
             String limit = getResources().getString(R.string.limit);
-            // List<Restaurant> restaurantList = service.getRestaurants(location, limit);
-            List<Restaurant> restaurantList = service.getRestaurants("43.648742", "-79.387199", limit);
+            List<Restaurant> restaurantList = new ArrayList<Restaurant>();
+            try {
+                // restaurantList = service.getRestaurants(location, limit);
+                restaurantList = service.getRestaurants("43.648742", "-79.387199", limit);
+                return restaurantList;
+            } catch (Exception e) {
+                Log.e("Error", e.getMessage());
+            }
             return restaurantList;
         }
 

@@ -34,11 +34,10 @@ public class RestaurantService {
         return restaurants;
     }
 
-    public List<Restaurant> getRestaurants(String lat, String lon, String limit) {
+    public List<Restaurant> getRestaurants(String lat, String lon, String limit) throws Exception {
         List<Restaurant> restaurants = new ArrayList<Restaurant>();
         YelpAPI yelp = YelpAPI.getYelp();
         String response = yelp.searchForBusinessesByLatLon(lat, lon, term, limit);
-        System.out.println(response.toString());
         try {
             createRestaurantListFromJSON(restaurants, response);
         } catch (JSONException e) {
