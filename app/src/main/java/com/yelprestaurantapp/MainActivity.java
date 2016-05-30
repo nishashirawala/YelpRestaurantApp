@@ -44,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
             String nameHeader = getString(R.string.nameHeader);
             String addressHeader = getString(R.string.addressHeader);
             sortableTableView.setHeaderAdapter(new SimpleTableHeaderAdapter(this, new String[]{nameHeader, addressHeader}));
-            int colorEvenRows = getColor(R.color.white);
-            int colorOddRows = getColor(R.color.ltgray);
+            int colorEvenRows = getResources().getColor(R.color.white);
+            int colorOddRows = getResources().getColor(R.color.ltgray);
             sortableTableView.setDataRowColorizer(TableDataRowColorizers.alternatingRows(colorEvenRows, colorOddRows));
             sortableTableView.addDataClickListener(new RestaurantDataClickListener(this));
         } else {
