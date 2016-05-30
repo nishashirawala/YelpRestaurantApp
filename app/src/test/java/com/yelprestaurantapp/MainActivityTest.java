@@ -30,8 +30,6 @@ public class MainActivityTest {
 
     private MainActivity fixture;
     private Context mockContext;
-    private Resources mockResources;
-    private ContextCompat contextCompat;
 
     @Before
     public void setUp() throws Exception {

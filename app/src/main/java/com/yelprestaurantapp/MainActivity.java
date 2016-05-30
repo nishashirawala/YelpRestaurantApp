@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         restaurantServiceAsyncTask.execute();
     }
 
-    @TargetApi(23)
     public void updateUI(List<Restaurant> list) {
         if(list != null && list.size()>0) {
             SortableTableView<Restaurant> sortableTableView = (SortableTableView<Restaurant>) findViewById(R.id.tableView);
