@@ -1,5 +1,7 @@
 package com.yelprestaurantapp;
 
+import android.annotation.TargetApi;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -32,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         restaurantServiceAsyncTask.execute();
     }
 
-
+    @TargetApi(23)
     public void updateUI(List<Restaurant> list) {
         if(list != null && list.size()>0) {
             SortableTableView<Restaurant> sortableTableView = (SortableTableView<Restaurant>) findViewById(R.id.tableView);
@@ -42,12 +44,12 @@ public class MainActivity extends AppCompatActivity {
             String nameHeader = getString(R.string.nameHeader);
             String addressHeader = getString(R.string.addressHeader);
             sortableTableView.setHeaderAdapter(new SimpleTableHeaderAdapter(this, new String[]{nameHeader, addressHeader}));
-            int colorEvenRows = ContextCompat.getColor(this, R.color.white);
-            int colorOddRows = ContextCompat.getColor(this, R.color.ltgray);
+            int colorEvenRows = getColor(R.color.white);
+            int colorOddRows = getColor(R.color.ltgray);
             sortableTableView.setDataRowColorizer(TableDataRowColorizers.alternatingRows(colorEvenRows, colorOddRows));
             sortableTableView.addDataClickListener(new RestaurantDataClickListener(this));
         } else {
-            showErrorMsg(getString(R.string.empty_restaurant_list));
+            showErrorMsg(getResources().getString(R.string.empty_restaurant_list));
         }
     }
 
