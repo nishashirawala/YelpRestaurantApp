@@ -57,7 +57,7 @@ public class RestaurantServiceTest {
     public void testSearchForBusinessesByLatLon() {
         List<Restaurant> restaurantList = null;
         try {
-            restaurantList = fixture.getRestaurants("43.6611", "-79.42868", "20");
+            restaurantList = fixture.getRestaurants("43.648742", "-79.387199", "20");
             Assert.assertNotNull(restaurantList);
             for (Restaurant restaurant : restaurantList) {
                 Assert.assertNotNull(restaurant.getId());

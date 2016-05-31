@@ -29,4 +29,15 @@ public class Restaurant {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        Restaurant other = (Restaurant) o;
+        return this.getId().equals(other.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
 }

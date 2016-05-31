@@ -7,6 +7,8 @@ import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.SmallTest;
 import android.test.suitebuilder.annotation.Suppress;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.TextView;
 
 import com.yelprestaurantapp.bean.Restaurant;
 
@@ -20,6 +22,7 @@ import org.junit.runner.RunWith;
 import java.lang.Override;
 
 import de.codecrafters.tableview.SortableTableView;
+import de.codecrafters.tableview.TableView;
 
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
@@ -61,21 +64,10 @@ public class MainActivityInstrumentation extends ActivityInstrumentationTestCase
         onView(withId(R.id.tableView)).check(matches(isDisplayed()));
     }
 
-    @Suppress
-    public void testFirstPage() {
-        onView(withId(R.id.tableView)).check(matches(isDisplayed()));
-      /*  onData(hasToString(startsWith("Byblos")))
-                .inAdapterView(withId(R.id.tableView))
-                .perform(click());*/
-
-        //onData(hasEntry(equalTo("STR"), is("Byblos")));
-        // onData(hasEntry(equalTo("STR"), is("aa")));
-        // onData(withItemContent("Byblos")).perform(click());
-        // onData(instanceOf(String.class)).inAdapterView(withText("Byblos")).atPosition(3).perform(click());
-        // onData(hasToString(startsWith("Byblos"))).inAdapterView(withContentDescription("Byblos")).check(matches(isDisplayed()));
-        //onData(hasToString(startsWith("Byblos"))).inAdapterView(withContentDescription("Byblos")).check(matches(isClickable()));
-        // onData(hasToString(startsWith("Byblos"))).inAdapterView(withContentDescription("Byblos")).perform(click());
-       //  onData(hasToString(startsWith("Byblos"))).inAdapterView(withContentDescription("Byblos")).atPosition(4).perform(click());
-        // onView(withText("Pearl Driver")).perform(click()).check(matches(isDisplayed()));
+    @Test
+    public void testClickOnRestaurant() {
+        Restaurant r = new Restaurant();
+        r.setId("byblos-toronto-2");
+        onData(allOf(is(instanceOf(Restaurant.class)), is(r))).perform(click());
     }
 }
