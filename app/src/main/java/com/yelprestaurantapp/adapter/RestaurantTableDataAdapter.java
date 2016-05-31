@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.yelprestaurantapp.R;
 import com.yelprestaurantapp.bean.Restaurant;
 
 import java.util.List;
@@ -36,6 +37,7 @@ public class RestaurantTableDataAdapter extends TableDataAdapter<Restaurant> {
     private View renderName(Restaurant r) {
         TextView textView1 = new TextView(this.getContext());
         textView1.setText(r.getName());
+        textView1.setContentDescription(r.getName());
         textView1.setPadding(20, 20, 20, 20);
         return textView1;
     }
