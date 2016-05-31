@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.support.v4.content.ContextCompat;
 import android.test.mock.MockResources;
+import android.widget.ListView;
 
+import com.google.common.collect.Lists;
 import com.yelprestaurantapp.bean.Restaurant;
 
 import org.junit.Assert;
@@ -43,8 +45,27 @@ public class MainActivityTest {
     public void testUpdateUI() {
         SortableTableView<Restaurant> tableView = (SortableTableView) fixture.findViewById(R.id.tableView);
         Assert.assertNotNull(tableView);
-        List<Restaurant> list = new ArrayList<>();
-        list.add(new Restaurant());
-        fixture.updateUI(list);
+        List<Restaurant> mockList = mockRestaurantList();
+        fixture.updateUI(mockList);
+    }
+
+    private List<Restaurant> mockRestaurantList() {
+        List<Restaurant> list = Lists.newArrayList();
+
+        list.add(mockRestaurant("r1", "r1-name", "r1-address"));
+        list.add(mockRestaurant("r2", "r2-name", "r2-address"));
+        list.add(mockRestaurant("r3", "r3-name", "r3-address"));
+        list.add(mockRestaurant("r4", "r4-name", "r4-address"));
+
+        return list;
+    }
+
+    private Restaurant mockRestaurant(String id, String name, String address) {
+        Restaurant restaurant = new Restaurant();
+        restaurant.setId(id);
+        restaurant.setName(name);
+        restaurant.setAddress(address);
+
+        return restaurant;
     }
 }
