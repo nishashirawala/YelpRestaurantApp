@@ -2,6 +2,8 @@ package com.yelprestaurantapp;
 
 
 import android.support.test.InstrumentationRegistry;
+import android.support.test.espresso.action.ViewActions;
+import android.support.test.espresso.core.deps.guava.base.Predicates;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.ActivityInstrumentationTestCase2;
@@ -41,6 +43,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withInputType;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.anyOf;
 import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.Matchers.hasEntry;
 import static org.hamcrest.Matchers.hasToString;
@@ -62,6 +65,15 @@ public class MainActivityInstrumentation extends ActivityInstrumentationTestCase
     @Test
     public void testTableViewDisplayed() {
         onView(withId(R.id.tableView)).check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void testClickOnAllRestaurants() {
+        onData(anyOf(is(instanceOf(Restaurant.class)))).atPosition(0).perform(click());
+        verifyDetailViewElementsDisplayed();
+        pressBack();
+        onData(anyOf(is(instanceOf(Restaurant.class)))).atPosition(1).perform(click());
+        verifyDetailViewElementsDisplayed();
     }
 
     @Test
