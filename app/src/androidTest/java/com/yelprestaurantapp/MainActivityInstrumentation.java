@@ -69,5 +69,17 @@ public class MainActivityInstrumentation extends ActivityInstrumentationTestCase
         Restaurant r = new Restaurant();
         r.setId("byblos-toronto-2");
         onData(allOf(is(instanceOf(Restaurant.class)), is(r))).perform(click());
+        onView(withId(R.id.detailLayout)).check(matches(isDisplayed()));
+        onView(withId(R.id.restaurantImage)).check(matches(isDisplayed()));
+        onView(withId(R.id.restaurantName)).check(matches(isDisplayed()));
+        onView(withId(R.id.restaurantAddress)).check(matches(isDisplayed()));
+        onView(withId(R.id.recommenedReviews)).check(matches(isDisplayed()));
+        onView(withId(R.id.userImage)).check(matches(isDisplayed()));
+        onView(withId(R.id.userName)).check(matches(isDisplayed()));
+        onView(withId(R.id.reviewText)).check(matches(isDisplayed()));
+        onView(withId(R.id.overallRatingTextView)).check(matches(isDisplayed()));
+        onView(withId(R.id.ratingTextView)).check(matches(isDisplayed()));
+        onView(withId(R.id.categoryTextView)).check(matches(isDisplayed()));
+
     }
 }
