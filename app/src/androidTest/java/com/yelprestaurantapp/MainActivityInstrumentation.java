@@ -1,6 +1,7 @@
 package com.yelprestaurantapp;
 
 
+import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.ActivityInstrumentationTestCase2;
@@ -15,6 +16,7 @@ import com.yelprestaurantapp.bean.Restaurant;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,6 +28,7 @@ import de.codecrafters.tableview.TableView;
 
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.Espresso.pressBack;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.core.deps.guava.base.Preconditions.checkNotNull;
@@ -49,14 +52,11 @@ import static org.hamcrest.Matchers.startsWith;
 @SmallTest
 public class MainActivityInstrumentation extends ActivityInstrumentationTestCase2<MainActivity> {
 
-
-
     @Rule
     public ActivityTestRule mActivityRule = new ActivityTestRule<>(MainActivity.class);
 
     public MainActivityInstrumentation() {
         super(MainActivity.class);
-
     }
 
     @Test
@@ -69,6 +69,22 @@ public class MainActivityInstrumentation extends ActivityInstrumentationTestCase
         Restaurant r = new Restaurant();
         r.setId("byblos-toronto-2");
         onData(allOf(is(instanceOf(Restaurant.class)), is(r))).perform(click());
+        verifyDetailViewElementsDisplayed();
+
+        onView(withId(R.id.restaurantName)).check(matches(withText("Byblos")));
+        onView(withId(R.id.restaurantAddress)).check(matches(withText("11 Duncan Street\n" + "Downtown Core\n" + "Toronto, ON M5V 3M2\n" + "Canada\n")));
+        onView(withId(R.id.overallRatingTextView)).check(matches(withText("Overall Rating")));
+
+        pressBack();
+
+        r.setId("under-the-table-restaurant-toronto");
+        onData(allOf(is(instanceOf(Restaurant.class)), is(r))).perform(click());
+        verifyDetailViewElementsDisplayed();
+
+        onView(withId(R.id.restaurantName)).check(matches(withText("Under The Table Restaurant")));
+    }
+
+    private void verifyDetailViewElementsDisplayed() {
         onView(withId(R.id.detailLayout)).check(matches(isDisplayed()));
         onView(withId(R.id.restaurantImage)).check(matches(isDisplayed()));
         onView(withId(R.id.restaurantName)).check(matches(isDisplayed()));
@@ -80,6 +96,5 @@ public class MainActivityInstrumentation extends ActivityInstrumentationTestCase
         onView(withId(R.id.overallRatingTextView)).check(matches(isDisplayed()));
         onView(withId(R.id.ratingTextView)).check(matches(isDisplayed()));
         onView(withId(R.id.categoryTextView)).check(matches(isDisplayed()));
-
     }
 }
