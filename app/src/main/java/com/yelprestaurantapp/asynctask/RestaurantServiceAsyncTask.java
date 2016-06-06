@@ -3,7 +3,6 @@ package com.yelprestaurantapp.asynctask;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.yelprestaurantapp.MainActivity;
 import com.yelprestaurantapp.bean.Restaurant;
 import com.yelprestaurantapp.service.RestaurantService;
 

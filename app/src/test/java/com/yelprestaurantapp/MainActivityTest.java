@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.support.v4.content.ContextCompat;
 import android.test.mock.MockResources;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.common.collect.Lists;
 import com.yelprestaurantapp.bean.Restaurant;
@@ -23,6 +24,7 @@ import java.util.List;
 
 import de.codecrafters.tableview.SortableTableView;
 
+import static com.yelprestaurantapp.MainActivity.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -48,6 +50,20 @@ public class MainActivityTest {
         List<Restaurant> mockList = mockRestaurantList();
         fixture.updateUI(mockList);
     }
+
+    @Test
+    public void testUpdateUI_withEmptyList() {
+        SortableTableView<Restaurant> tableView = (SortableTableView) fixture.findViewById(R.id.tableView);
+        Assert.assertNotNull(tableView);
+        List<Restaurant> mockList = new ArrayList<>();
+        fixture.updateUI(mockList);
+        TextView errorTextView = (TextView) tableView.getChildAt(0);
+        Assert.assertNotNull(errorTextView);
+        String expectedErrorMsg = fixture.getResources().getString(R.string.empty_restaurant_list);
+       //  String ee = mockContext.getResources().getString(R.string.empty_restaurant_list);
+        Assert.assertEquals(expectedErrorMsg, errorTextView.getText());
+    }
+
 
     private List<Restaurant> mockRestaurantList() {
         List<Restaurant> list = Lists.newArrayList();
