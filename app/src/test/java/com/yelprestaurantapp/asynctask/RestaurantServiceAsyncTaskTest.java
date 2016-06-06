@@ -27,22 +27,23 @@ import static org.mockito.Mockito.when;
 
 @RunWith(RobolectricGradleTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 21)
-public class RestaurantServiceAsyncTaskTest {
+public class RestaurantServiceAsyncTaskTest implements RestaurantServiceAsyncTask.ResultListener{
 
     private RestaurantServiceAsyncTask fixture;
     private MainActivity mockMainActivity;
+    private List<Restaurant> asyncResult;
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         mockMainActivity = mock(MainActivity.class);
         Assert.assertNotNull(mockMainActivity);
-        fixture = new RestaurantServiceAsyncTask(mockMainActivity);
+        fixture = new RestaurantServiceAsyncTask(mockMainActivity, this);
         Assert.assertNotNull(fixture);
     }
 
     @Test
-    public void testDoInBackground() {
+    public void testExecute() {
 
         String location = "toronto";
         String limit = "10";
@@ -53,7 +54,12 @@ public class RestaurantServiceAsyncTaskTest {
         AsyncTask<String, Object, List<Restaurant>> task = fixture.execute(params);
         List<Restaurant> list = new ArrayList< Restaurant >();
         doNothing().when(mockMainActivity).updateUI(list);
+        Assert.assertNotNull(asyncResult);
     }
 
 
+    @Override
+    public void handleAsyncResult(List<Restaurant> restaurantList) {
+        asyncResult = restaurantList;
+    }
 }

@@ -25,7 +25,7 @@ import de.codecrafters.tableview.TableView;
 import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
 import de.codecrafters.tableview.toolkit.TableDataRowColorizers;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements RestaurantServiceAsyncTask.ResultListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +57,11 @@ public class MainActivity extends AppCompatActivity {
         } else {
             showErrorMsg(getResources().getString(R.string.empty_restaurant_list));
         }
+    }
+
+    @Override
+    public void handleAsyncResult(List<Restaurant> restaurantList) {
+        this.updateUI(restaurantList);
     }
 
     static class RestaurantNameComparator implements Comparator<Restaurant> {
