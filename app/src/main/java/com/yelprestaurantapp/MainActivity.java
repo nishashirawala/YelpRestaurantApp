@@ -11,6 +11,7 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.yelprestaurantapp.adapter.RestaurantTableDataAdapter;
+import com.yelprestaurantapp.asynctask.RestaurantServiceAsyncTask;
 import com.yelprestaurantapp.bean.Restaurant;
 import com.yelprestaurantapp.listener.RestaurantDataClickListener;
 import com.yelprestaurantapp.service.RestaurantService;
@@ -30,15 +31,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        RestaurantServiceAsyncTask restaurantServiceAsyncTask = new RestaurantServiceAsyncTask();
-        restaurantServiceAsyncTask.execute();
+
+        String location = getString(R.string.searchLocation);
+        String limit = getString(R.string.limit);
+        String lat = getString(R.string.lat);
+        String lon = getString(R.string.lon);
+
+        String[] params = {location, limit, lat, lon};
+        RestaurantServiceAsyncTask restaurantServiceAsyncTask = new RestaurantServiceAsyncTask(this);
+        restaurantServiceAsyncTask.execute(params);
     }
 
     public void updateUI(List<Restaurant> list) {
         if(list != null && list.size()>0) {
             SortableTableView<Restaurant> sortableTableView = (SortableTableView<Restaurant>) findViewById(R.id.tableView);
             sortableTableView.setDataAdapter(new RestaurantTableDataAdapter(this, list));
-            sortableTableView.setColumnComparator(0, new RestaurantNameComparator());
             sortableTableView.setColumnComparator(0, new RestaurantNameComparator());
             String nameHeader = getString(R.string.nameHeader);
             String addressHeader = getString(R.string.addressHeader);
@@ -52,38 +59,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private static class RestaurantNameComparator implements Comparator<Restaurant> {
+    static class RestaurantNameComparator implements Comparator<Restaurant> {
         @Override
         public int compare(Restaurant r1, Restaurant r2) {
             return r1.getName().compareTo(r2.getName());
-        }
-    }
-
-    class RestaurantServiceAsyncTask extends AsyncTask {
-
-        @Override
-        protected Object doInBackground(Object[] params) {
-            RestaurantService service = new RestaurantService();
-            String location = getString(R.string.searchLocation);
-            String limit = getString(R.string.limit);
-            String lat = getString(R.string.lat);
-            String lon = getString(R.string.lon);
-            List<Restaurant> restaurantList = new ArrayList<Restaurant>();
-            try {
-                // restaurantList = service.getRestaurants(location, limit);
-                restaurantList = service.getRestaurants(lat, lon, limit);
-                return restaurantList;
-            } catch (Exception e) {
-                Log.e("Error", e.getMessage());
-            }
-            return restaurantList;
-        }
-
-        @Override
-        protected void onPostExecute(Object object) {
-            super.onPostExecute(object);
-            List<Restaurant> restaurantList = (List<Restaurant>) object;
-            MainActivity.this.updateUI(restaurantList);
         }
     }
 
