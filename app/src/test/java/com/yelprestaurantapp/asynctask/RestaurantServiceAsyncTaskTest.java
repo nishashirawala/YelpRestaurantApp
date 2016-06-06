@@ -30,30 +30,23 @@ import static org.mockito.Mockito.when;
 public class RestaurantServiceAsyncTaskTest implements RestaurantServiceAsyncTask.ResultListener{
 
     private RestaurantServiceAsyncTask fixture;
-    private MainActivity mockMainActivity;
     private List<Restaurant> asyncResult;
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        mockMainActivity = mock(MainActivity.class);
-        Assert.assertNotNull(mockMainActivity);
-        fixture = new RestaurantServiceAsyncTask(mockMainActivity, this);
+        fixture = new RestaurantServiceAsyncTask(this);
         Assert.assertNotNull(fixture);
     }
 
     @Test
     public void testExecute() {
-
         String location = "toronto";
         String limit = "10";
         String lat = "43.648742";
         String lon = "-79.387199";
-
         String[] params = {location, limit, lat, lon};
         AsyncTask<String, Object, List<Restaurant>> task = fixture.execute(params);
-        List<Restaurant> list = new ArrayList< Restaurant >();
-        doNothing().when(mockMainActivity).updateUI(list);
         Assert.assertNotNull(asyncResult);
     }
 
