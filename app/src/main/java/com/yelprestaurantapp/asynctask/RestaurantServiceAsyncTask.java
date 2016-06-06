@@ -4,14 +4,13 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.yelprestaurantapp.MainActivity;
-import com.yelprestaurantapp.R;
 import com.yelprestaurantapp.bean.Restaurant;
 import com.yelprestaurantapp.service.RestaurantService;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RestaurantServiceAsyncTask extends AsyncTask<String, Object, Object> {
+public class RestaurantServiceAsyncTask extends AsyncTask<String, Object, List<Restaurant>> {
 
     MainActivity mainActivity;
 
@@ -20,12 +19,7 @@ public class RestaurantServiceAsyncTask extends AsyncTask<String, Object, Object
     }
 
     @Override
-    protected void onPreExecute() {
-        super.onPreExecute();
-    }
-
-    @Override
-    protected Object doInBackground(String... params) {
+    protected List<Restaurant> doInBackground(String... params) {
         RestaurantService service = new RestaurantService();
         String location = params[0];
         String limit = params[1];
@@ -43,9 +37,9 @@ public class RestaurantServiceAsyncTask extends AsyncTask<String, Object, Object
     }
 
     @Override
-    protected void onPostExecute(Object object) {
-        super.onPostExecute(object);
-        List<Restaurant> restaurantList = (List<Restaurant>) object;
+    protected void onPostExecute(List<Restaurant> restaurantList) {
+        super.onPostExecute(restaurantList);
+       //  List<Restaurant> restaurantList = (List<Restaurant>) object;
         mainActivity.updateUI(restaurantList);
     }
 }
