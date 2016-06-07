@@ -49,6 +49,8 @@ public class MainActivityTest {
         Assert.assertNotNull(tableView);
         List<Restaurant> mockList = mockRestaurantList();
         fixture.updateUI(mockList);
+        List<Restaurant> data = tableView.getDataAdapter().getData();
+        Assert.assertNotNull(data);
     }
 
     @Test
@@ -60,18 +62,28 @@ public class MainActivityTest {
         TextView errorTextView = (TextView) tableView.getChildAt(0);
         Assert.assertNotNull(errorTextView);
         String expectedErrorMsg = fixture.getResources().getString(R.string.empty_restaurant_list);
-       //  String ee = mockContext.getResources().getString(R.string.empty_restaurant_list);
         Assert.assertEquals(expectedErrorMsg, errorTextView.getText());
+    }
+
+    @Test
+    public void testRestaurantNameComparator() {
+        SortableTableView<Restaurant> tableView = (SortableTableView) fixture.findViewById(R.id.tableView);
+        RestaurantNameComparator restaurantNameComparator = (RestaurantNameComparator) tableView.getColumnComparator(0);
+        Assert.assertNotNull(restaurantNameComparator);
+        List<Restaurant> mockList = mockRestaurantList();
+        Assert.assertEquals(1 , restaurantNameComparator.compare(mockList.get(0), mockList.get(1)));
+        Assert.assertEquals(-1 , restaurantNameComparator.compare(mockList.get(1), mockList.get(0)));
+        Assert.assertEquals(1 , restaurantNameComparator.compare(mockList.get(1), mockList.get(2)));
     }
 
 
     private List<Restaurant> mockRestaurantList() {
         List<Restaurant> list = Lists.newArrayList();
 
-        list.add(mockRestaurant("r1", "r1-name", "r1-address"));
-        list.add(mockRestaurant("r2", "r2-name", "r2-address"));
-        list.add(mockRestaurant("r3", "r3-name", "r3-address"));
-        list.add(mockRestaurant("r4", "r4-name", "r4-address"));
+        list.add(mockRestaurant("r3", "C3-name", "r3-address"));
+        list.add(mockRestaurant("r2", "B2-name", "r2-address"));
+        list.add(mockRestaurant("r1", "A1-name", "r1-address"));
+        list.add(mockRestaurant("r4", "D4-name", "r4-address"));
 
         return list;
     }
