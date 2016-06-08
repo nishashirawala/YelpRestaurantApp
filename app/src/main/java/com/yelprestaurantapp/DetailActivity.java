@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.yelprestaurantapp.asynctask.RestaurantDetailServiceAsyncTask;
 import com.yelprestaurantapp.bean.Category;
 import com.yelprestaurantapp.bean.RestaurantDetail;
 import com.yelprestaurantapp.bean.Review;
@@ -35,7 +36,7 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
-public class DetailActivity extends AppCompatActivity {
+public class DetailActivity extends AppCompatActivity implements RestaurantDetailServiceAsyncTask.ResultListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,37 +44,16 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
         Intent intent = getIntent();
         String businessID = intent.getStringExtra("businessId");
-        if(businessID != null) {
-            new RestaurantDetailServiceAsyncTask(businessID).execute();
+        if (businessID != null) {
+            String[] params = {businessID};
+            new RestaurantDetailServiceAsyncTask(this).execute(params);
         } else {
             showErrorMsg(getString(R.string.null_business_id));
         }
     }
 
-    private class RestaurantDetailServiceAsyncTask extends AsyncTask {
-        String businessId;
-
-        public RestaurantDetailServiceAsyncTask(String businssId) {
-            this.businessId = businssId;
-        }
-
-        @Override
-        protected Object doInBackground(Object[] params) {
-            RestaurantService service = new RestaurantService();
-            RestaurantDetail restaurantDetails = service.getRestaurantDetails(businessId);
-            return restaurantDetails;
-        }
-
-        @Override
-        protected void onPostExecute(Object o) {
-            super.onPostExecute(o);
-            RestaurantDetail restaurantDetail = (RestaurantDetail) o;
-            DetailActivity.this.updateUI(restaurantDetail);
-        }
-    }
-
     public void updateUI(RestaurantDetail detail) {
-        if(detail != null) {
+        if (detail != null) {
             TextView resNameTextView = (TextView) findViewById(R.id.restaurantName);
             resNameTextView.setText(detail.getName());
             List<Category> categoryList = detail.getCategories();
@@ -105,10 +85,10 @@ public class DetailActivity extends AppCompatActivity {
     @NonNull
     private String createCategoryString(List<Category> categoryList) {
         String categoryStr = "";
-        if(categoryList != null && categoryList.size() >0) {
-            for(int i=0; i<categoryList.size(); i++) {
+        if (categoryList != null && categoryList.size() > 0) {
+            for (int i = 0; i < categoryList.size(); i++) {
                 Category c = categoryList.get(i);
-                if(i == categoryList.size()-1) {
+                if (i == categoryList.size() - 1) {
                     categoryStr += c.getName();
                 } else {
                     categoryStr += c.getName() + " | ";
@@ -116,6 +96,11 @@ public class DetailActivity extends AppCompatActivity {
             }
         }
         return categoryStr;
+    }
+
+    @Override
+    public void handleAsyncResult(RestaurantDetail restaurantDetail) {
+        this.updateUI(restaurantDetail);
     }
 
     private class DownloadHttpsImageTask extends AsyncTask<String, Void, Bitmap> {
@@ -159,6 +144,7 @@ public class DetailActivity extends AppCompatActivity {
             bmImage.setImageBitmap(result);
         }
     }
+
     private void showErrorMsg(String errorMsg) {
         RelativeLayout layout = (RelativeLayout) findViewById(R.id.detailLayout);
         layout.removeAllViews();
