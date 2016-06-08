@@ -31,8 +31,8 @@ public class RestaurantServiceAsyncTask extends AsyncTask<String, Object, List<R
         String lon = params[3];
         List<Restaurant> restaurantList = new ArrayList<Restaurant>();
         try {
-            // restaurantList = service.getRestaurants(location, limit);
-            restaurantList = service.getRestaurants(lat, lon, limit);
+            restaurantList = service.getRestaurants(location, limit);
+            // restaurantList = service.getRestaurants(lat, lon, limit);
             return restaurantList;
         } catch (Exception e) {
             Log.e("Error", e.getMessage());
