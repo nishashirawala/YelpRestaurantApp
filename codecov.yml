@@ -2,5 +2,3 @@ comment:
   layout: header, diff, changes, sunburst, uncovered
 coverage:
   status: {}
-codecov:
-  token: 3934b079-3ce6-4d58-8f9a-d073c2eaba89
