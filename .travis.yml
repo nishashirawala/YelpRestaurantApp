@@ -10,4 +10,4 @@ android:
         - extra-android-m2repository
 script: ./gradlew check
 before_install: - chmod +x gradlew
-after_success: bash <(curl -s https://codecov.io/bash)
+after_success: - bash <(curl -s https://codecov.io/bash)
