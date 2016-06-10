@@ -1,6 +1,6 @@
 # YelpRestaurantApp
 
-![build status](https://travis-ci.org/nishashirawala/YelpRestaurantApp.svg?branch=master)
+[![build status](https://travis-ci.org/nishashirawala/YelpRestaurantApp.svg?branch=master)](https://travis-ci.org/nishashirawala/YelpRestaurantApp)
 
 Android app to show restaurant list from yelp. Project is created with android-studio, android api 23.
 
