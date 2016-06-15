@@ -1,8 +1,11 @@
 package com.yelprestaurantapp;
 
+import android.content.Intent;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
 import com.google.common.collect.Lists;
 import com.yelprestaurantapp.bean.Category;
-import com.yelprestaurantapp.bean.Restaurant;
 import com.yelprestaurantapp.bean.RestaurantDetail;
 import com.yelprestaurantapp.bean.Review;
 import com.yelprestaurantapp.bean.Reviewer;
@@ -16,7 +19,6 @@ import org.robolectric.Robolectric;
 import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.annotation.Config;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RunWith(RobolectricGradleTestRunner.class)
@@ -28,8 +30,34 @@ public class DetailActivityTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        fixture = Robolectric.setupActivity(DetailActivity.class);
+        Intent intent = new Intent();
+        intent.putExtra("businessId", "under-the-table-restaurant-toronto");
+        fixture = Robolectric.buildActivity(DetailActivity.class).withIntent(intent).create().get();
         Assert.assertNotNull(fixture);
+    }
+
+
+    @Test
+    public void onCreate_withNoIntent() throws Exception {
+        DetailActivity activity = Robolectric.setupActivity(DetailActivity.class);
+        Assert.assertNotNull(activity);
+        RelativeLayout layout = (RelativeLayout) activity.findViewById(R.id.detailLayout);
+        TextView errorTextView = (TextView) layout.getChildAt(0);
+        Assert.assertNotNull(errorTextView);
+        String expectedErrorMsg = fixture.getResources().getString(R.string.null_business_id);
+        Assert.assertEquals(expectedErrorMsg, errorTextView.getText());
+    }
+
+
+    @Test
+    public void testUpdateUI_nullDetails() {
+        fixture.setContentView(R.layout.activity_detail);
+        fixture.updateUI(null);
+        RelativeLayout layout = (RelativeLayout) fixture.findViewById(R.id.detailLayout);
+        TextView errorTextView = (TextView) layout.getChildAt(0);
+        Assert.assertNotNull(errorTextView);
+        String expectedErrorMsg = fixture.getResources().getString(R.string.null_business_detail);
+        Assert.assertEquals(expectedErrorMsg, errorTextView.getText());
     }
 
     @Test
