@@ -45,6 +45,7 @@ public class DetailActivityTest {
         restaurantDetail.setName("Under The Table Restaurant");
         restaurantDetail.setRatingImgUrl("https://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png");
         restaurantDetail.setRating(4.0);
+        restaurantDetail.setImageUrl("https://s3-media3.fl.yelpcdn.com/bphoto/SZGqok34AyExcN_zaZ8MRQ/ms.jpg");
 
         List<Category> categoryList = Lists.newArrayList();
         Category c1 = new Category();
