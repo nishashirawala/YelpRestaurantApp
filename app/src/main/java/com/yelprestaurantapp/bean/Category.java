@@ -20,4 +20,30 @@ public class Category {
     public void setAlias(String alias) {
         this.alias = alias;
     }
+
+    public static class CategoryBuilder {
+
+        private String name;
+        private String alias;
+
+        public CategoryBuilder name(String name) {
+            this.name = name;
+            return this;
+        }
+        public CategoryBuilder alias(String alias) {
+            this.alias = alias;
+            return this;
+        }
+
+        public Category build() {
+            Category c = new Category();
+            c.setName(this.name);
+            c.setAlias(this.alias);
+            return c;
+        }
+
+    }
+
 }
+
+
