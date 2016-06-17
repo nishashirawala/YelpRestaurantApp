@@ -76,17 +76,9 @@ public class DetailActivityTest {
         restaurantDetail.setImageUrl("https://s3-media3.fl.yelpcdn.com/bphoto/SZGqok34AyExcN_zaZ8MRQ/ms.jpg");
 
         List<Category> categoryList = Lists.newArrayList();
-        Category c1 = new Category();
-        c1.setName("Caribbean");
-        c1.setAlias("caribbean");
-        categoryList.add(c1);
-        c1.setName("Comfort Food");
-        c1.setAlias("comfortfood");
-        categoryList.add(c1);
-        c1.setName("Breakfast & Brunch");
-        c1.setAlias("breakfast_brunch");
-        categoryList.add(c1);
-
+        categoryList.add(new Category.CategoryBuilder().name("Caribbean").alias("caribbean").build());
+        categoryList.add(new Category.CategoryBuilder().name("Comfort Food").alias("comfortfood").build());
+        categoryList.add(new Category.CategoryBuilder().name("Breakfast & Brunch").alias("breakfast_brunch").build());
         restaurantDetail.setCategories(categoryList);
 
         restaurantDetail.setDisplayAddress("568 Parliament St\n" +
