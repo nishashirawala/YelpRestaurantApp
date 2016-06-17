@@ -4,7 +4,8 @@ package com.yelprestaurantapp.asynctask;
 import com.yelprestaurantapp.BuildConfig;
 import com.yelprestaurantapp.bean.RestaurantDetail;
 
-import org.junit.Assert;
+import junit.framework.Assert;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,6 +33,9 @@ public class RestaurantDetailServiceAsyncTaskTest implements RestaurantDetailSer
         String[] params = {id};
         fixture.execute(params);
         Assert.assertNotNull(asyncResult);
+
+        Assert.assertEquals("Under The Table Restaurant", asyncResult.getName());
+        Assert.assertEquals(3, asyncResult.getCategories().size());
     }
     @Override
     public void handleAsyncResult(RestaurantDetail restaurantDetail) {
