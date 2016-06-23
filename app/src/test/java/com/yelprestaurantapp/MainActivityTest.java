@@ -1,6 +1,7 @@
 package com.yelprestaurantapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v4.content.ContextCompat;
 import android.test.mock.MockResources;
@@ -39,7 +40,11 @@ public class MainActivityTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
         mockContext = mock(Context.class);
-        fixture = Robolectric.setupActivity(MainActivity.class);
+        Intent intent = new Intent();
+        intent.putExtra("searchLocation", "toronto");
+        intent.putExtra("searchLimit", "10");
+        fixture = Robolectric.buildActivity(MainActivity.class).withIntent(intent).create().get();
+        // fixture = Robolectric.setupActivity(MainActivity.class);
         Assert.assertNotNull(fixture);
     }
 
