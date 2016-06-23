@@ -3,11 +3,26 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <EditText
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/searchTxt"
+        android:layout_column="0"
+        android:layout_columnSpan="6"
+        android:layout_row="6"
+        android:hint="@string/searchLocation"
+        android:layout_gravity="center_horizontal" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/limitTxt"
+        android:layout_column="0"
+        android:layout_columnSpan="6"
+        android:layout_row="6"
+        android:hint="@string/limit"
         android:layout_gravity="center_horizontal" />
 
     <Button
