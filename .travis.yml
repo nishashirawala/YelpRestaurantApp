@@ -8,9 +8,8 @@ android:
         - android-23
         - extra-google-m2repository
         - extra-android-m2repository
-#script: ./gradlew testDebugUnitTest jacocoTestDebugUnitTestReport
 script: ./gradlew app:test jacocoTestDebugUnitTestReport
-script: ./gradlew app:connectedAndroidTest jacocoTestDebugUnitTestReport
+# script: ./gradlew app:connectedAndroidTest jacocoTestDebugUnitTestReport
 before_install:
         - chmod +x gradlew
 after_success:
