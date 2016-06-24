@@ -3,8 +3,10 @@ package com.yelprestaurantapp;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.yelprestaurantapp.adapter.RestaurantTableDataAdapter;
@@ -27,6 +29,8 @@ public class MainActivity extends AppCompatActivity implements RestaurantService
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         Intent intent = getIntent();
 
         String location = intent.getStringExtra("searchLocation");
@@ -37,6 +41,16 @@ public class MainActivity extends AppCompatActivity implements RestaurantService
         String[] params = {location, limit, lat, lon};
         RestaurantServiceAsyncTask restaurantServiceAsyncTask = new RestaurantServiceAsyncTask(this);
         restaurantServiceAsyncTask.execute(params);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void updateUI(List<Restaurant> list) {

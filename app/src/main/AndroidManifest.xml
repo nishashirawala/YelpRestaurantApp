@@ -17,8 +17,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".DetailActivity" />
+        <activity android:name=".MainActivity"
+            android:parentActivityName=".SearchActivity"/>
+        <activity android:name=".DetailActivity"
+            android:parentActivityName=".MainActivity"/>
     </application>
 
 </manifest>
