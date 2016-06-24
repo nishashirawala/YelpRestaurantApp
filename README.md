@@ -14,3 +14,9 @@
 
 Android app to show restaurant list from yelp.
 
+
+# Integration with Travis CI (https://travis-ci.org/)
+Travis CI is a hosted continuous integration service. You can sign up with a GitHub account. It’s free for open source projects.
+You need to add .travis.yml configuration file for your project. If you want whenever a build succeeds, upload JaCoCo report to Codecov.
+
+
