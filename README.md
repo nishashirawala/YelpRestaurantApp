@@ -45,6 +45,9 @@ You need to have andrid emulator already running for this command
 
 # Integration with [Travis CI] (https://travis-ci.org/)
 Travis CI is a hosted continuous integration service. You can sign up with a GitHub account. It’s free for open source projects.
-You need to add .travis.yml configuration file for your project. If you want whenever a build succeeds, upload JaCoCo report to Codecov.
+You need to add ```.travis.yml``` configuration file for your project. If you want whenever a build succeeds, upload JaCoCo report to Codecov.
+
+# Integration with [Codacy](https://www.codacy.com/)
+...
 
 
