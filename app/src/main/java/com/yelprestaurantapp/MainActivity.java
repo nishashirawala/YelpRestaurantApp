@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements RestaurantService
 
         String location = intent.getStringExtra("searchLocation");
         String limit = intent.getStringExtra("searchLimit");;
+        Log.i("MainActivity" , "Started main activity for location " + location + " and limit " + limit);
         String lat = getString(R.string.lat);
         String lon = getString(R.string.lon);
 
