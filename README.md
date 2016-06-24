@@ -3,6 +3,14 @@
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [YelpRestaurantApp](#yelprestaurantapp)
+  - [Running Tests](#running-tests)
+    - [UnitTesting](#unittesting)
+      - [In Android Studio](#in-android-studio)
+      - [From command-line via Gradle](#from-command-line-via-gradle)
+  - [Instrumentation Tests](#instrumentation-tests)
+      - [In Android Studio](#in-android-studio-1)
+      - [From command-line via Gradle](#from-command-line-via-gradle-1)
+- [Integration with [Travis CI] (https://travis-ci.org/)](#integration-with-travis-ci-httpstravis-ciorg)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
