@@ -39,7 +39,9 @@ Android app to show restaurant list from yelp.
 - Right click on it and select ```Run All tests```
 
 #### From command-line via Gradle
+You need to have andrid emulator already running for this command
 - To run all local unit tests in app module ```gradlew app:connectedAndroidTest```
+
 
 # Integration with [Travis CI] (https://travis-ci.org/)
 Travis CI is a hosted continuous integration service. You can sign up with a GitHub account. It’s free for open source projects.
