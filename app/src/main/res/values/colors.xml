@@ -8,4 +8,5 @@
     <color name="dkgray">#ff444444</color>
     <color name="ltgray">#ffcccccc</color>
     <color name="blue">#ff0000ff</color>
+    <color name="red">#0f0f0f0f</color>
 </resources>
