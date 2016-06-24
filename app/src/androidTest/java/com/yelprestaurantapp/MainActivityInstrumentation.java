@@ -1,6 +1,8 @@
 package com.yelprestaurantapp;
 
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.action.ViewActions;
 import android.support.test.espresso.core.deps.guava.base.Predicates;
@@ -19,6 +21,7 @@ import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -53,13 +56,24 @@ import static org.hamcrest.Matchers.startsWith;
 
 @RunWith(AndroidJUnit4.class)
 @SmallTest
+@Ignore
 public class MainActivityInstrumentation extends ActivityInstrumentationTestCase2<MainActivity> {
 
-    @Rule
-    public ActivityTestRule mActivityRule = new ActivityTestRule<>(MainActivity.class);
+    private Context mContext;
 
     public MainActivityInstrumentation() {
         super(MainActivity.class);
+    }
+
+    @Before
+    public void setUp() throws Exception {
+        injectInstrumentation(InstrumentationRegistry.getInstrumentation());
+        mContext = getInstrumentation().getContext();
+        Intent intent = new Intent(mContext, DetailActivity.class);
+        intent.putExtra("searchLocation", "toronto");
+        intent.putExtra("searchLimit", "10");
+        launchActivityWithIntent("com.yelprestaurantapp", MainActivity.class, intent);
+        super.setUp();
     }
 
     @Test
