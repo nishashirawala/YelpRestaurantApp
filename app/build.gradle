@@ -45,7 +45,7 @@ dependencies {
     // Android Instrument Testing
     androidTestCompile 'org.hamcrest:hamcrest-library:1.3'
     androidTestCompile 'com.android.support:support-annotations:23.1.0'
-    // Optional -- UI testing with Espresso - Android Instrument Testing
+    // UI testing with Espresso - Android Instrument Testing
     androidTestCompile ('com.android.support.test.espresso:espresso-core:2.2.1')
             { exclude group: 'com.google.code.findbugs', module: 'jsr305' }
 }
