@@ -30,5 +30,6 @@ public class YelpAPITest {
     @Test
     public void testSearchForBusinessesByLatLon() throws Exception {
         String response = fixture.searchForBusinessesByLatLon("43.648742", "-79.387199", "restaurants", "10");
+        assertNotNull(response);
     }
 }
