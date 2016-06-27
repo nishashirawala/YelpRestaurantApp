@@ -7,12 +7,12 @@
     - [UnitTesting](#unittesting)
       - [In Android Studio](#in-android-studio)
       - [From command-line via Gradle](#from-command-line-via-gradle)
-    - [Instrumentation Tests](#instrumentation-tests)
+    - [Instrumentation Tests0](#instrumentation-tests0)
       - [In Android Studio](#in-android-studio-1)
       - [From command-line via Gradle](#from-command-line-via-gradle-1)
-- [Integration with Travis CI](#integration-with-travis-ci-httpstravis-ciorg)
+- [Integration with [Travis CI] (https://travis-ci.org/)](#integration-with-travis-ci-httpstravis-ciorg)
 - [Integration with Codacy](#integration-with-codacy)
-- [UI Testing with Espresso] (#UI-Testing-with-Espresso)
+- [UI Testing with Espresso](#ui-testing-with-espresso)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
