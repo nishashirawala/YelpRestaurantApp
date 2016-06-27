@@ -64,11 +64,10 @@ Espresso has basically three components:
 
 The case construct for Espresso tests is the following:
 
-Base Espresso Test
-  ```onView(ViewMatcher)    
+     ```onView(ViewMatcher)    
       .perform(ViewAction)   
-        .check(ViewAssertion); 
+        .check(ViewAssertion); ```
   -  Finds the view
   -  Performs an action on the view
-  -  Validates a assertioin```
+  -  Validates a assertioin
 
