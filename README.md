@@ -11,8 +11,9 @@
       - [In Android Studio](#in-android-studio-1)
       - [From command-line via Gradle](#from-command-line-via-gradle-1)
 - [Integration with [Travis CI] (https://travis-ci.org/)](#integration-with-travis-ci-httpstravis-ciorg)
-- [Integration with Codacy](#integration-with-codacy)
-- [UI Testing with Espresso](#ui-testing-with-espresso)
+- [Integration with [Codacy] (https://www.codacy.com/)](#integration-with-codacy-httpswwwcodacycom)
+- [Unit Testing with [Robolectric] (http://robolectric.org/)](#unit-testing-with-robolectric-httprobolectricorg)
+- [UI Testing with [Espresso] (https://google.github.io/android-testing-support-library/docs/espresso/)](#ui-testing-with-espresso-httpsgooglegithubioandroid-testing-support-librarydocsespresso)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
