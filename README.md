@@ -49,10 +49,14 @@ You need to have andrid emulator already running for this command
 Travis CI is a hosted continuous integration service. You can sign up with a GitHub account. It’s free for open source projects.
 You need to add ```.travis.yml``` configuration file for your project. If you want whenever a build succeeds, upload JaCoCo report to Codecov.
 
-# Integration with [Codacy](https://www.codacy.com/)
+# Integration with [Codacy] (https://www.codacy.com/)
 ...
 
-# UI Testing with [Espresso](https://google.github.io/android-testing-support-library/docs/espresso/)
+# Unit Testing with [Robolectric] (http://robolectric.org/)
+Robolectric is a testing framework that de-fangs the Android SDK so you can test-drive the development of your Android app.
+Git page - https://github.com/robolectric/robolectric
+
+# UI Testing with [Espresso] (https://google.github.io/android-testing-support-library/docs/espresso/)
 Espresso is a testing framework for Android to make it easy to write reliable user interface tests for a single application. 
 Espresso automatically synchronizes your test actions with the user interface of your application. The framework also ensures that your activity is started before the tests run. It also let the test wait until all observed background activities have finished.
 
@@ -64,9 +68,9 @@ Espresso has basically three components:
 
 The case construct for Espresso tests is the following:
 
-     ```onView(ViewMatcher)    
+     onView(ViewMatcher)    
       .perform(ViewAction)   
-        .check(ViewAssertion); ```
+        .check(ViewAssertion); 
   -  Finds the view
   -  Performs an action on the view
   -  Validates a assertioin
