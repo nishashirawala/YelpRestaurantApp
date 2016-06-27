@@ -2,10 +2,6 @@ package com.yelprestaurantapp;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.support.v4.content.ContextCompat;
-import android.test.mock.MockResources;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.common.collect.Lists;
@@ -25,21 +21,18 @@ import java.util.List;
 
 import de.codecrafters.tableview.SortableTableView;
 
-import static com.yelprestaurantapp.MainActivity.*;
+import static com.yelprestaurantapp.MainActivity.RestaurantNameComparator;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 @RunWith(RobolectricGradleTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 21)
 public class MainActivityTest {
 
     private MainActivity fixture;
-    private Context mockContext;
 
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        mockContext = mock(Context.class);
         Intent intent = new Intent();
         intent.putExtra("searchLocation", "toronto");
         intent.putExtra("searchLimit", "10");

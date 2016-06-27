@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.yelprestaurantapp.R;
 import com.yelprestaurantapp.bean.Restaurant;
 
 import java.util.List;

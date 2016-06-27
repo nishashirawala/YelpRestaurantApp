@@ -1,8 +1,6 @@
 package com.yelprestaurantapp.service;
 
 
-import android.content.Context;
-
 import com.yelprestaurantapp.bean.Category;
 import com.yelprestaurantapp.bean.Restaurant;
 import com.yelprestaurantapp.bean.RestaurantDetail;

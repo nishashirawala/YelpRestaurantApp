@@ -1,12 +1,9 @@
 package com.yelprestaurantapp.asynctask;
 
 
-import android.content.Context;
 import android.os.AsyncTask;
 
 import com.yelprestaurantapp.BuildConfig;
-import com.yelprestaurantapp.MainActivity;
-import com.yelprestaurantapp.R;
 import com.yelprestaurantapp.bean.Restaurant;
 
 import org.junit.Assert;
@@ -14,16 +11,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.MockitoAnnotations;
-import org.robolectric.Robolectric;
 import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.annotation.Config;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 @RunWith(RobolectricGradleTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 21)
