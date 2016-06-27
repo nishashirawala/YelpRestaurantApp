@@ -11,7 +11,7 @@ public class YelpAPITest {
     private YelpAPI fixture;
 
     @Before
-    public void setup() {
+    public void setUp() {
         fixture = YelpAPI.getYelp();
     }
 
