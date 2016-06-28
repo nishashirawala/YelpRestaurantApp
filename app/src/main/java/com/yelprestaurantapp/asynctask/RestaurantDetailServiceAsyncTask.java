@@ -7,7 +7,7 @@ import com.yelprestaurantapp.service.RestaurantService;
 
 public class RestaurantDetailServiceAsyncTask extends AsyncTask<String, Object, RestaurantDetail> {
 
-    ResultListener resultListener;
+    private ResultListener resultListener;
 
     public interface ResultListener {
         void handleAsyncResult(RestaurantDetail restaurantDetail);

@@ -29,6 +29,8 @@ public class RestaurantTableDataAdapter extends TableDataAdapter<Restaurant> {
             case 1:
                 renderedView = renderAddress(restaurant);
                 break;
+            default:
+                break;
         }
         return renderedView;
     }

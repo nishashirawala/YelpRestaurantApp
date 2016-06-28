@@ -1,9 +1,5 @@
 package com.yelprestaurantapp.yelp;
 
-import android.content.Context;
-
-import com.yelprestaurantapp.R;
-
 import org.scribe.builder.ServiceBuilder;
 import org.scribe.model.OAuthRequest;
 import org.scribe.model.Response;
@@ -15,8 +11,8 @@ public class YelpAPI {
 
     private static String SEARCH_URL = "http://api.yelp.com/v2/search";
     private static String BUSINESS_URL = "http://api.yelp.com/v2/business";
-    OAuthService service;
-    Token accessToken;
+    private OAuthService service;
+    private Token accessToken;
 
     public static String consumerKey = "IMv6Cs7XEvqy8iT7XcPKcA";
     public static String consumerSecret = "qoRGwOGWrx34CmV3wDFp3hDaJNk";

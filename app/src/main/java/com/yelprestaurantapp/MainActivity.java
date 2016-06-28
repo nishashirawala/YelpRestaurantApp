@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements RestaurantService
         Intent intent = getIntent();
 
         String location = intent.getStringExtra("searchLocation");
-        String limit = intent.getStringExtra("searchLimit");;
+        String limit = intent.getStringExtra("searchLimit");
         Log.i("MainActivity" , "Started main activity for location " + location + " and limit " + limit);
         String lat = getString(R.string.lat);
         String lon = getString(R.string.lon);
@@ -50,8 +50,9 @@ public class MainActivity extends AppCompatActivity implements RestaurantService
             case android.R.id.home:
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
     }
 
     public void updateUI(List<Restaurant> list) {

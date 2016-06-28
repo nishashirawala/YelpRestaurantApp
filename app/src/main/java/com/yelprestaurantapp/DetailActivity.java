@@ -20,9 +20,6 @@ import com.yelprestaurantapp.bean.Category;
 import com.yelprestaurantapp.bean.RestaurantDetail;
 import com.yelprestaurantapp.bean.Review;
 import com.yelprestaurantapp.bean.Reviewer;
-import com.yelprestaurantapp.service.RestaurantService;
-
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -61,11 +58,11 @@ public class DetailActivity extends AppCompatActivity implements RestaurantDetai
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
     }
 
     public void updateUI(RestaurantDetail detail) {
@@ -120,7 +117,7 @@ public class DetailActivity extends AppCompatActivity implements RestaurantDetai
     }
 
     private class DownloadHttpsImageTask extends AsyncTask<String, Void, Bitmap> {
-        ImageView bmImage;
+        private ImageView bmImage;
 
         public DownloadHttpsImageTask(ImageView bmImage) {
             this.bmImage = bmImage;
@@ -137,7 +134,7 @@ public class DetailActivity extends AppCompatActivity implements RestaurantDetai
     }
 
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
-        ImageView bmImage;
+        private ImageView bmImage;
 
         public DownloadImageTask(ImageView bmImage) {
             this.bmImage = bmImage;
