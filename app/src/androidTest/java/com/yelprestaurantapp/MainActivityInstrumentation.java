@@ -30,6 +30,7 @@ import static org.hamcrest.Matchers.is;
 
 @RunWith(AndroidJUnit4.class)
 @SmallTest
+@Suppress
 public class MainActivityInstrumentation extends ActivityInstrumentationTestCase2<MainActivity> {
 
     public MainActivityInstrumentation() {
@@ -56,13 +57,13 @@ public class MainActivityInstrumentation extends ActivityInstrumentationTestCase
     public void testClickOnAllRestaurants() {
         onData(anyOf(is(instanceOf(Restaurant.class)))).atPosition(0).perform(click());
         verifyDetailViewElementsDisplayed();
-        /*pressBack();
+        pressBack();
         onData(anyOf(is(instanceOf(Restaurant.class)))).atPosition(1).perform(click());
-        verifyDetailViewElementsDisplayed();*/
+        verifyDetailViewElementsDisplayed();
     }
 
     @Test
-    @Suppress
+
     public void testClickOnRestaurant() {
         Restaurant r = new Restaurant();
         r.setId("byblos-toronto-2");
@@ -84,7 +85,7 @@ public class MainActivityInstrumentation extends ActivityInstrumentationTestCase
 
     private void verifyDetailViewElementsDisplayed() {
         onView(allOf(withId(R.id.detailLayout))).check(matches(isDisplayed()));
-       /* onView(allOf(withId(R.id.restaurantImage))).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.restaurantImage))).check(matches(isDisplayed()));
         onView(allOf(withId(R.id.restaurantName))).check(matches(isDisplayed()));
         onView(allOf(withId(R.id.restaurantAddress))).check(matches(isDisplayed()));
         onView(allOf(withId(R.id.recommenedReviews))).check(matches(isDisplayed()));
@@ -93,6 +94,6 @@ public class MainActivityInstrumentation extends ActivityInstrumentationTestCase
         onView(allOf(withId(R.id.reviewText))).check(matches(isDisplayed()));
         onView(allOf(withId(R.id.overallRatingTextView))).check(matches(isDisplayed()));
         onView(allOf(withId(R.id.ratingTextView))).check(matches(isDisplayed()));
-        onView(allOf(withId(R.id.categoryTextView))).check(matches(isDisplayed()));*/
+        onView(allOf(withId(R.id.categoryTextView))).check(matches(isDisplayed()));
     }
 }
