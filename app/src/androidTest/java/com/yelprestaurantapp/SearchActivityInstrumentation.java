@@ -5,6 +5,7 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.SmallTest;
+import android.test.suitebuilder.annotation.Suppress;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -17,6 +18,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 
 @RunWith(AndroidJUnit4.class)
 @SmallTest
+@Suppress
 public class SearchActivityInstrumentation extends ActivityInstrumentationTestCase2<SearchActivity> {
 
     @Rule
