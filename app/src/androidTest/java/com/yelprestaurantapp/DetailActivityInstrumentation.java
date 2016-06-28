@@ -41,5 +41,7 @@ public class DetailActivityInstrumentation extends ActivityInstrumentationTestCa
         intent.putExtra("businessId", "the-gabardine-toronto");
         launchActivityWithIntent("com.yelprestaurantapp", DetailActivity.class, intent);
         onView(allOf(withId(R.id.detailLayout))).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.restaurantName))).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.restaurantAddress))).check(matches(isDisplayed()));
     }
 }
