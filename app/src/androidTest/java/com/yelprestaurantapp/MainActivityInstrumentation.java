@@ -31,8 +31,6 @@ import static org.hamcrest.Matchers.is;
 @SmallTest
 public class MainActivityInstrumentation extends ActivityInstrumentationTestCase2<MainActivity> {
 
-    private Context mContext;
-
     public MainActivityInstrumentation() {
         super(MainActivity.class);
     }
@@ -40,8 +38,8 @@ public class MainActivityInstrumentation extends ActivityInstrumentationTestCase
     @Before
     public void setUp() throws Exception {
         injectInstrumentation(InstrumentationRegistry.getInstrumentation());
-        mContext = getInstrumentation().getContext();
-        Intent intent = new Intent(mContext, DetailActivity.class);
+        Context mContext = getInstrumentation().getContext();
+        Intent intent = new Intent(mContext, MainActivity.class);
         intent.putExtra("searchLocation", "toronto");
         intent.putExtra("searchLimit", "10");
         launchActivityWithIntent("com.yelprestaurantapp", MainActivity.class, intent);
