@@ -1,8 +1,6 @@
 package com.yelprestaurantapp.service;
 
 
-import android.content.Context;
-
 import com.yelprestaurantapp.bean.Category;
 import com.yelprestaurantapp.bean.Restaurant;
 import com.yelprestaurantapp.bean.RestaurantDetail;
@@ -14,8 +12,6 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.List;
-
-import static org.mockito.Mockito.mock;
 
 @RunWith(MockitoJUnitRunner.class)
 public class RestaurantServiceTest {

@@ -1,8 +1,6 @@
 package com.yelprestaurantapp.asynctask;
 
 
-import android.os.AsyncTask;
-
 import com.yelprestaurantapp.BuildConfig;
 import com.yelprestaurantapp.bean.Restaurant;
 
@@ -37,7 +35,7 @@ public class RestaurantServiceAsyncTaskTest implements RestaurantServiceAsyncTas
         String lat = "43.648742";
         String lon = "-79.387199";
         String[] params = {location, limit, lat, lon};
-        AsyncTask<String, Object, List<Restaurant>> task = fixture.execute(params);
+        fixture.execute(params);
         Assert.assertNotNull(asyncResult);
     }
 
