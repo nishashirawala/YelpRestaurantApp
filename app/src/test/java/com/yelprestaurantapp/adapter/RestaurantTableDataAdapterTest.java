@@ -1,7 +1,6 @@
 package com.yelprestaurantapp.adapter;
 
 import android.content.Context;
-import android.widget.TextView;
 
 import com.google.common.collect.Lists;
 import com.yelprestaurantapp.BuildConfig;
@@ -14,14 +13,11 @@ import org.junit.runner.RunWith;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricGradleTestRunner;
-import org.robolectric.Shadows;
 import org.robolectric.annotation.Config;
-import org.w3c.dom.Text;
 
 import java.util.List;
 
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 @RunWith(RobolectricGradleTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 21)

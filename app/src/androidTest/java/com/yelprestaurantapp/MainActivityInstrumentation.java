@@ -41,7 +41,7 @@ public class MainActivityInstrumentation extends ActivityInstrumentationTestCase
         Context mContext = getInstrumentation().getContext();
         Intent intent = new Intent(mContext, MainActivity.class);
         intent.putExtra("searchLocation", "toronto");
-        intent.putExtra("searchLimit", "10");
+        intent.putExtra("searchLimit", "15");
         launchActivityWithIntent("com.yelprestaurantapp", MainActivity.class, intent);
         super.setUp();
     }
@@ -81,6 +81,7 @@ public class MainActivityInstrumentation extends ActivityInstrumentationTestCase
     }
 
     private void verifyDetailViewElementsDisplayed() {
+        onView(withId(R.id.detailLayout)).check(matches(isDisplayed()));
         onView(withId(R.id.detailLayout)).check(matches(isDisplayed()));
         onView(withId(R.id.restaurantImage)).check(matches(isDisplayed()));
         onView(withId(R.id.restaurantName)).check(matches(isDisplayed()));
