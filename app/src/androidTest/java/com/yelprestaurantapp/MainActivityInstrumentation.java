@@ -7,7 +7,6 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.SmallTest;
-import android.test.suitebuilder.annotation.Suppress;
 
 import com.yelprestaurantapp.bean.Restaurant;
 
@@ -30,7 +29,6 @@ import static org.hamcrest.Matchers.is;
 
 @RunWith(AndroidJUnit4.class)
 @SmallTest
-@Suppress
 public class MainActivityInstrumentation extends ActivityInstrumentationTestCase2<MainActivity> {
 
     public MainActivityInstrumentation() {
@@ -50,7 +48,7 @@ public class MainActivityInstrumentation extends ActivityInstrumentationTestCase
 
     @Test
     public void testTableViewDisplayed() {
-        onView(withId(R.id.tableView)).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.tableView))).check(matches(isDisplayed()));
     }
 
     @Test
@@ -69,9 +67,9 @@ public class MainActivityInstrumentation extends ActivityInstrumentationTestCase
         onData(allOf(is(instanceOf(Restaurant.class)), is(r))).perform(click());
         verifyDetailViewElementsDisplayed();
 
-        onView(withId(R.id.restaurantName)).check(matches(withText("Byblos")));
-        onView(withId(R.id.restaurantAddress)).check(matches(withText("11 Duncan Street\n" + "Downtown Core\n" + "Toronto, ON M5V 3M2\n" + "Canada\n")));
-        onView(withId(R.id.overallRatingTextView)).check(matches(withText("Overall Rating")));
+        onView(allOf(withId(R.id.restaurantName))).check(matches(withText("Byblos")));
+        onView(allOf(withId(R.id.restaurantAddress))).check(matches(withText("11 Duncan Street\n" + "Downtown Core\n" + "Toronto, ON M5V 3M2\n" + "Canada\n")));
+        onView(allOf(withId(R.id.overallRatingTextView))).check(matches(withText("Overall Rating")));
 
         pressBack();
 
@@ -79,20 +77,20 @@ public class MainActivityInstrumentation extends ActivityInstrumentationTestCase
         onData(allOf(is(instanceOf(Restaurant.class)), is(r))).perform(click());
         verifyDetailViewElementsDisplayed();
 
-        onView(withId(R.id.restaurantName)).check(matches(withText("Under The Table Restaurant")));
+        onView(allOf(withId(R.id.restaurantName))).check(matches(withText("Under The Table Restaurant")));
     }
 
     private void verifyDetailViewElementsDisplayed() {
-        onView(withId(R.id.detailLayout)).check(matches(isDisplayed()));
-        // onView(withId(R.id.restaurantImage)).check(matches(isDisplayed()));
-        onView(withId(R.id.restaurantName)).check(matches(isDisplayed()));
-        onView(withId(R.id.restaurantAddress)).check(matches(isDisplayed()));
-        onView(withId(R.id.recommenedReviews)).check(matches(isDisplayed()));
-        // onView(withId(R.id.userImage)).check(matches(isDisplayed()));
-        onView(withId(R.id.userName)).check(matches(isDisplayed()));
-        onView(withId(R.id.reviewText)).check(matches(isDisplayed()));
-        onView(withId(R.id.overallRatingTextView)).check(matches(isDisplayed()));
-        onView(withId(R.id.ratingTextView)).check(matches(isDisplayed()));
-        onView(withId(R.id.categoryTextView)).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.detailLayout))).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.restaurantImage))).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.restaurantName))).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.restaurantAddress))).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.recommenedReviews))).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.userImage))).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.userName))).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.reviewText))).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.overallRatingTextView))).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.ratingTextView))).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.categoryTextView))).check(matches(isDisplayed()));
     }
 }
