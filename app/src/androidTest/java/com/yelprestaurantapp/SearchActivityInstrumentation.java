@@ -5,7 +5,6 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.SmallTest;
-import android.test.suitebuilder.annotation.Suppress;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -15,10 +14,10 @@ import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static org.hamcrest.Matchers.allOf;
 
 @RunWith(AndroidJUnit4.class)
 @SmallTest
-@Suppress
 public class SearchActivityInstrumentation extends ActivityInstrumentationTestCase2<SearchActivity> {
 
     @Rule
@@ -30,8 +29,8 @@ public class SearchActivityInstrumentation extends ActivityInstrumentationTestCa
 
     @Test
     public void testActivityLaunched() {
-        onView(withId(R.id.searchTxt)).check(matches(isDisplayed()));
-        onView(withId(R.id.searchBtn)).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.searchTxt))).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.searchBtn))).check(matches(isDisplayed()));
     }
 
 
