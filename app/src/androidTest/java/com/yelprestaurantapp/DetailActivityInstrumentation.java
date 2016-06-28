@@ -12,6 +12,12 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static org.hamcrest.Matchers.allOf;
+
 @RunWith(AndroidJUnit4.class)
 @SmallTest
 public class DetailActivityInstrumentation extends ActivityInstrumentationTestCase2<DetailActivity> {
@@ -34,5 +40,6 @@ public class DetailActivityInstrumentation extends ActivityInstrumentationTestCa
         Intent intent = new Intent(mContext, DetailActivity.class);
         intent.putExtra("businessId", "the-gabardine-toronto");
         launchActivityWithIntent("com.yelprestaurantapp", DetailActivity.class, intent);
+        onView(allOf(withId(R.id.detailLayout))).check(matches(isDisplayed()));
     }
 }
