@@ -7,7 +7,6 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.SmallTest;
-import android.test.suitebuilder.annotation.Suppress;
 
 import com.yelprestaurantapp.bean.Restaurant;
 
@@ -30,7 +29,6 @@ import static org.hamcrest.Matchers.is;
 
 @RunWith(AndroidJUnit4.class)
 @SmallTest
-@Suppress
 public class MainActivityInstrumentation extends ActivityInstrumentationTestCase2<MainActivity> {
 
     public MainActivityInstrumentation() {
@@ -84,15 +82,11 @@ public class MainActivityInstrumentation extends ActivityInstrumentationTestCase
 
     private void verifyDetailViewElementsDisplayed() {
         onView(allOf(withId(R.id.detailLayout))).check(matches(isDisplayed()));
-        onView(allOf(withId(R.id.restaurantImage))).check(matches(isDisplayed()));
         onView(allOf(withId(R.id.restaurantName))).check(matches(isDisplayed()));
         onView(allOf(withId(R.id.restaurantAddress))).check(matches(isDisplayed()));
         onView(allOf(withId(R.id.recommenedReviews))).check(matches(isDisplayed()));
         onView(allOf(withId(R.id.userImage))).check(matches(isDisplayed()));
         onView(allOf(withId(R.id.userName))).check(matches(isDisplayed()));
         onView(allOf(withId(R.id.reviewText))).check(matches(isDisplayed()));
-        onView(allOf(withId(R.id.overallRatingTextView))).check(matches(isDisplayed()));
-        onView(allOf(withId(R.id.ratingTextView))).check(matches(isDisplayed()));
-        onView(allOf(withId(R.id.categoryTextView))).check(matches(isDisplayed()));
     }
 }
