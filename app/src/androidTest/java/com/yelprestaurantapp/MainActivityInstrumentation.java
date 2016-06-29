@@ -63,7 +63,6 @@ public class MainActivityInstrumentation extends ActivityInstrumentationTestCase
     }
 
     @Test
-
     public void testClickOnRestaurant() {
         Restaurant r = new Restaurant();
         r.setId("byblos-toronto-2");
