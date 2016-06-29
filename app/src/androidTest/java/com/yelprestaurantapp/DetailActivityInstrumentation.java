@@ -47,5 +47,6 @@ public class DetailActivityInstrumentation extends ActivityInstrumentationTestCa
         onView(allOf(withId(R.id.userImage))).check(matches(isDisplayed()));
         onView(allOf(withId(R.id.userName))).check(matches(isDisplayed()));
         onView(allOf(withId(R.id.reviewText))).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.overallRatingTextView))).check(matches(isDisplayed()));
     }
 }
