@@ -6,6 +6,9 @@
     <string name="limit">10</string>
     <string name="lat">43.648742</string>
     <string name="lon">-79.387199</string>
+    <string name="overall_rating">Overall Rating</string>
+    <string name="categories">Categories</string>
+    <string name="recommened_reviews">Recommended Reviews</string>
 
     <string name="empty_restaurant_list">Unable to find restaurants from yelp</string>
     <string name="null_business_id">Unable to find restaurant detail. Restaurant Id is null</string>
