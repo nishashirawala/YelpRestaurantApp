@@ -11,7 +11,7 @@ import java.util.List;
 
 public class RestaurantServiceAsyncTask extends AsyncTask<String, Object, List<Restaurant>> {
 
-    ResultListener resultListener;
+    private ResultListener resultListener;
 
     public interface ResultListener {
         void handleAsyncResult(List<Restaurant> restaurantList);
