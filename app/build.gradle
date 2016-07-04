@@ -30,7 +30,7 @@ android {
     }*/
 }
 jacocoAndroidUnitTestReport {
-    excludes += [ 'com.yelprestaurantapp.bean/*' ]
+    excludes += [ '**/Category*.*' ]
 }
 
 configurations.all {
