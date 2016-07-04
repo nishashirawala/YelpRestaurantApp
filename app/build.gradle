@@ -29,6 +29,10 @@ android {
         unitTests.returnDefaultValues = true
     }*/
 }
+jacocoAndroidUnitTestReport {
+    excludes += [ 'com.yelprestaurantapp.bean/*' ]
+}
+
 configurations.all {
     resolutionStrategy.force 'com.android.support:support-annotations:23.1.0'
 }
