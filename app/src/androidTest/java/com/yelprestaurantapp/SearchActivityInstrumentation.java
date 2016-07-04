@@ -9,17 +9,23 @@ import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.SmallTest;
 import android.widget.EditText;
 
+import com.yelprestaurantapp.bean.Restaurant;
+
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.anyOf;
+import static org.hamcrest.Matchers.instanceOf;
+import static org.hamcrest.Matchers.is;
 
 @RunWith(AndroidJUnit4.class)
 @SmallTest
@@ -65,5 +71,17 @@ public class SearchActivityInstrumentation extends ActivityInstrumentationTestCa
         });
         onView(withId(R.id.searchBtn)).perform(click());
         onView(allOf(withId(R.id.tableView))).check(matches(isDisplayed()));
+        onData(anyOf(is(instanceOf(Restaurant.class)))).atPosition(0).perform(click());
+        verifyDetailViewElementsDisplayed();
+    }
+
+    private void verifyDetailViewElementsDisplayed() {
+        onView(allOf(withId(R.id.detailLayout))).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.restaurantName))).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.restaurantAddress))).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.recommenedReviews))).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.userImage))).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.userName))).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.reviewText))).check(matches(isDisplayed()));
     }
 }
