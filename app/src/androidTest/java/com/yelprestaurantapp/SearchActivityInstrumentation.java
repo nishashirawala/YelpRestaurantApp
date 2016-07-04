@@ -1,16 +1,21 @@
 package com.yelprestaurantapp;
 
 
+import android.app.Activity;
+import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.SmallTest;
+import android.widget.EditText;
 
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
@@ -23,9 +28,19 @@ public class SearchActivityInstrumentation extends ActivityInstrumentationTestCa
     @Rule
     public ActivityTestRule mActivityRule = new ActivityTestRule<>(SearchActivity.class);
 
+    private Activity mActivity = null;
+
     public SearchActivityInstrumentation() {
         super(SearchActivity.class);
     }
+
+    @Before
+    public void setUp() throws Exception {
+        injectInstrumentation(InstrumentationRegistry.getInstrumentation());
+        setActivityInitialTouchMode(false);
+        mActivity = mActivityRule.getActivity();
+    }
+
 
     @Test
     public void testActivityLaunched() {
@@ -33,5 +48,22 @@ public class SearchActivityInstrumentation extends ActivityInstrumentationTestCa
         onView(allOf(withId(R.id.searchBtn))).check(matches(isDisplayed()));
     }
 
-
+    @Test
+    public void testSearchRestaurant() {
+        onView(allOf(withId(R.id.searchTxt))).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.limitTxt))).check(matches(isDisplayed()));
+        final EditText searchTxt = (EditText) mActivity.findViewById(R.id.searchTxt);
+        final EditText limitTxt = (EditText) mActivity.findViewById(R.id.limitTxt);
+        mActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                searchTxt.requestFocus();
+                searchTxt.setText("ottawa");
+                limitTxt.requestFocus();
+                limitTxt.setText("15");
+            }
+        });
+        onView(withId(R.id.searchBtn)).perform(click());
+        onView(allOf(withId(R.id.tableView))).check(matches(isDisplayed()));
+    }
 }
