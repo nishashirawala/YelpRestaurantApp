@@ -47,6 +47,10 @@ public class MainActivityTest {
         fixture.updateUI(mockList);
         List<Restaurant> data = tableView.getDataAdapter().getData();
         Assert.assertNotNull(data);
+        Assert.assertEquals(mockList.size(), data.size());
+        Assert.assertEquals("C3-name", data.get(0).getName());
+        Assert.assertEquals("r3", data.get(0).getId());
+        Assert.assertEquals("r3-address", data.get(0).getAddress());
     }
 
     @Test

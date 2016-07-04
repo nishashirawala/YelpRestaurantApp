@@ -76,6 +76,8 @@ public class RestaurantServiceTest {
         Category c1 =  detail.getCategories().get(0);
         Category c2 =  detail.getCategories().get(1);
         Assert.assertEquals("Ethiopian", c1.getName());
+        Assert.assertEquals("ethiopian", c1.getAlias());
         Assert.assertEquals("Vegetarian", c2.getName());
+        Assert.assertEquals("vegetarian", c2.getAlias());
     }
 }
