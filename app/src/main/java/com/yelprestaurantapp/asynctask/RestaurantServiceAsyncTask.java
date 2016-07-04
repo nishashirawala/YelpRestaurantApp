@@ -27,12 +27,9 @@ public class RestaurantServiceAsyncTask extends AsyncTask<String, Object, List<R
         RestaurantService service = new RestaurantService();
         String location = params[0];
         String limit = params[1];
-        String lat = params[2];
-        String lon = params[3];
         List<Restaurant> restaurantList = new ArrayList<Restaurant>();
         try {
             restaurantList = service.getRestaurants(location, limit);
-            // restaurantList = service.getRestaurants(lat, lon, limit);
             return restaurantList;
         } catch (Exception e) {
             Log.e("Error for " + location, e.getMessage());
