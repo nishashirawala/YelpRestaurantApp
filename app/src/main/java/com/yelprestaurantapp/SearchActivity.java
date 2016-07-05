@@ -35,7 +35,7 @@ public class SearchActivity extends AppCompatActivity {
                 intent.putExtra("searchLimit", limit);
                 startActivity(intent);
             } else {
-                showErrorMsg("Search Text can not be empty");
+                showErrorMsg(getResources().getString(R.string.empty_search_text));
             }
         }
 
