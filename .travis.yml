@@ -33,5 +33,4 @@ before_install:
         - chmod +x gradlew
 
 after_success:
-        - ./gradlew jacocoFullReport
         - bash <(curl -s https://codecov.io/bash)
