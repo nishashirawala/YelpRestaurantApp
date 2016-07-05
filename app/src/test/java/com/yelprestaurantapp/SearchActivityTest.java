@@ -2,7 +2,10 @@ package com.yelprestaurantapp;
 
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,6 +36,18 @@ public class SearchActivityTest {
         Button searchBtn = (Button) fixture.findViewById(R.id.searchBtn);
         searchBtn.performClick();
 
+    }
+
+
+    @Test
+    public void testSearchRestaurant_showError() {
+        Button searchBtn = (Button) fixture.findViewById(R.id.searchBtn);
+        searchBtn.performClick();
+        LinearLayout searchLayout = (LinearLayout) fixture.findViewById(R.id.searchLayout);
+        TextView errorTextView = (TextView) searchLayout.getChildAt(0);
+        Assert.assertNotNull(errorTextView);
+        String expectedErrorMsg = fixture.getResources().getString(R.string.empty_search_text);
+        Assert.assertEquals(expectedErrorMsg, errorTextView.getText());
     }
 
 
