@@ -1,5 +1,6 @@
 package com.yelprestaurantapp;
 
+import android.content.Intent;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -12,7 +13,11 @@ import org.junit.runner.RunWith;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricGradleTestRunner;
+import org.robolectric.Shadows;
 import org.robolectric.annotation.Config;
+import org.robolectric.shadows.ShadowActivity;
+
+import static junit.framework.Assert.assertTrue;
 
 @RunWith(RobolectricGradleTestRunner.class)
 @Config(constants = BuildConfig.class, sdk = 21)
@@ -36,6 +41,14 @@ public class SearchActivityTest {
         Button searchBtn = (Button) fixture.findViewById(R.id.searchBtn);
         searchBtn.performClick();
 
+        ShadowActivity shadowActivity = Shadows.shadowOf(fixture);
+        Intent actualIntent = shadowActivity.getNextStartedActivity();
+        Intent expectedIntent = new Intent(fixture, MainActivity.class);
+        expectedIntent.putExtra("searchLimit", 15);
+        expectedIntent.putExtra("searchLocation", "toronto");
+        assertTrue(actualIntent.filterEquals(expectedIntent));
+        Assert.assertEquals(expectedIntent.getBundleExtra("searchLimit"), actualIntent.getBundleExtra("searchLimit"));
+        Assert.assertEquals(expectedIntent.getBundleExtra("searchLocation"), actualIntent.getBundleExtra("searchLocation"));
     }
 
 
