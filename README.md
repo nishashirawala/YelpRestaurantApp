@@ -61,6 +61,15 @@ Git page - https://github.com/robolectric/robolectric
 Espresso is a testing framework for Android to make it easy to write reliable user interface tests for a single application. 
 Espresso automatically synchronizes your test actions with the user interface of your application. The framework also ensures that your activity is started before the tests run. It also let the test wait until all observed background activities have finished.
 
+Setup Espresso by adding following to build.gradle
+```
+dependencies {
+  ...
+  androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.1'
+  ...
+}
+```
+
 Espresso has basically three components:
 
 1. ViewMatchers - allows to find view in the current view hierarchy
