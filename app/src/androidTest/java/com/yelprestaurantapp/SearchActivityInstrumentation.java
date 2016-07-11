@@ -2,10 +2,8 @@ package com.yelprestaurantapp;
 
 
 import android.app.Activity;
-import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.SmallTest;
 import android.widget.EditText;
 
@@ -29,7 +27,7 @@ import static org.hamcrest.Matchers.is;
 
 @RunWith(AndroidJUnit4.class)
 @SmallTest
-public class SearchActivityInstrumentation extends ActivityInstrumentationTestCase2<SearchActivity> {
+public class SearchActivityInstrumentation extends ActivityTestRule<SearchActivity> {
 
     @Rule
     public ActivityTestRule mActivityRule = new ActivityTestRule<>(SearchActivity.class);
@@ -42,8 +40,6 @@ public class SearchActivityInstrumentation extends ActivityInstrumentationTestCa
 
     @Before
     public void setUp() throws Exception {
-        injectInstrumentation(InstrumentationRegistry.getInstrumentation());
-        setActivityInitialTouchMode(false);
         mActivity = mActivityRule.getActivity();
     }
 
