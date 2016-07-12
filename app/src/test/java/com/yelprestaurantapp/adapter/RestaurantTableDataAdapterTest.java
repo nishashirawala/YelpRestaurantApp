@@ -40,7 +40,7 @@ public class RestaurantTableDataAdapterTest {
         Assert.assertEquals("A1-name", restaurantName.getText());
         TextView restaurantAddress = (TextView) fixture.getCellView(0, 1, null);
         Assert.assertEquals("r1-address", restaurantAddress.getText());
-        View view = fixture.getCellView(1, 1, null);
+        View view = fixture.getCellView(2, 2, null);
         Assert.assertNull(view);
     }
 
