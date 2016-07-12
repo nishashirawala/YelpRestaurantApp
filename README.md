@@ -35,7 +35,7 @@ Android app to show restaurant list from yelp.
 #### From command-line via Gradle
 - To run all local unit tests in app module ```gradlew app:test```
 
-### Instrumentation Tests0
+### Instrumentation Tests
 #### In Android Studio
 - In the Build Variants window, make sure the Android Instrumentation Tests option is selected.
 - Open package app-> src -> androidTest -> java 
@@ -83,5 +83,5 @@ The case construct for Espresso tests is the following:
         .check(ViewAssertion); 
   -  Finds the view
   -  Performs an action on the view
-  -  Validates a assertioin
+  -  Validates a assertion
 
