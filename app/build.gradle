@@ -25,9 +25,6 @@ android {
 	lintOptions {
       abortOnError false
 	}
-    /*testOptions {
-        unitTests.returnDefaultValues = true
-    }*/
 }
 jacocoAndroidUnitTestReport {
     excludes += [ 'com.yelprestaurantapp.bean/*' ]
