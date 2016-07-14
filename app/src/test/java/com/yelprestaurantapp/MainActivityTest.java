@@ -1,6 +1,7 @@
 package com.yelprestaurantapp;
 
 import android.content.Intent;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.google.common.collect.Lists;
@@ -14,6 +15,7 @@ import org.mockito.MockitoAnnotations;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.annotation.Config;
+import org.robolectric.fakes.RoboMenuItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +37,6 @@ public class MainActivityTest {
         intent.putExtra("searchLocation", "toronto");
         intent.putExtra("searchLimit", "10");
         fixture = Robolectric.buildActivity(MainActivity.class).withIntent(intent).create().get();
-        // fixture = Robolectric.setupActivity(MainActivity.class);
         Assert.assertNotNull(fixture);
     }
 
@@ -71,9 +72,19 @@ public class MainActivityTest {
         RestaurantNameComparator restaurantNameComparator = (RestaurantNameComparator) tableView.getColumnComparator(0);
         Assert.assertNotNull(restaurantNameComparator);
         List<Restaurant> mockList = mockRestaurantList();
-        Assert.assertEquals(1 , restaurantNameComparator.compare(mockList.get(0), mockList.get(1)));
-        Assert.assertEquals(-1 , restaurantNameComparator.compare(mockList.get(1), mockList.get(0)));
-        Assert.assertEquals(1 , restaurantNameComparator.compare(mockList.get(1), mockList.get(2)));
+        Assert.assertEquals(1, restaurantNameComparator.compare(mockList.get(0), mockList.get(1)));
+        Assert.assertEquals(-1, restaurantNameComparator.compare(mockList.get(1), mockList.get(0)));
+        Assert.assertEquals(1, restaurantNameComparator.compare(mockList.get(1), mockList.get(2)));
+    }
+
+    @Test
+    public void testOnOptionsItemSelected() {
+        MenuItem menuItem = new RoboMenuItem(R.id.home);
+        boolean returnVal = fixture.onOptionsItemSelected(menuItem);
+        Assert.assertFalse(returnVal);
+        menuItem = new RoboMenuItem(android.R.id.home);
+        returnVal = fixture.onOptionsItemSelected(menuItem);
+        Assert.assertTrue(returnVal);
     }
 
 

@@ -1,6 +1,7 @@
 package com.yelprestaurantapp;
 
 import android.content.Intent;
+import android.view.MenuItem;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -18,6 +19,7 @@ import org.mockito.MockitoAnnotations;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.annotation.Config;
+import org.robolectric.fakes.RoboMenuItem;
 
 import java.util.List;
 
@@ -65,6 +67,16 @@ public class DetailActivityTest {
         fixture.setContentView(R.layout.activity_detail);
         RestaurantDetail detail = mockRestaurantDetail();
         fixture.updateUI(detail);
+    }
+
+    @Test
+    public void testOnOptionsItemSelected() {
+        MenuItem menuItem = new RoboMenuItem(R.id.home);
+        boolean returnVal = fixture.onOptionsItemSelected(menuItem);
+        Assert.assertFalse(returnVal);
+        menuItem = new RoboMenuItem(android.R.id.home);
+        returnVal = fixture.onOptionsItemSelected(menuItem);
+        Assert.assertTrue(returnVal);
     }
 
     private RestaurantDetail mockRestaurantDetail() {
