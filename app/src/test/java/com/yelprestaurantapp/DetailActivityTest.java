@@ -72,11 +72,9 @@ public class DetailActivityTest {
     @Test
     public void testOnOptionsItemSelected() {
         MenuItem menuItem = new RoboMenuItem(R.id.home);
-        boolean returnVal = fixture.onOptionsItemSelected(menuItem);
-        Assert.assertFalse(returnVal);
+        Assert.assertFalse(fixture.onOptionsItemSelected(menuItem));
         menuItem = new RoboMenuItem(android.R.id.home);
-        returnVal = fixture.onOptionsItemSelected(menuItem);
-        Assert.assertTrue(returnVal);
+        Assert.assertTrue(fixture.onOptionsItemSelected(menuItem));
     }
 
     private RestaurantDetail mockRestaurantDetail() {
