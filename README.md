@@ -7,13 +7,13 @@
     - [UnitTesting](#unittesting)
       - [In Android Studio](#in-android-studio)
       - [From command-line via Gradle](#from-command-line-via-gradle)
-    - [Instrumentation Tests0](#instrumentation-tests0)
+    - [Instrumentation Tests](#instrumentation-tests0)
       - [In Android Studio](#in-android-studio-1)
       - [From command-line via Gradle](#from-command-line-via-gradle-1)
-- [Integration with Travis CI](#integration-with-travis-ci)
-- [Integration with Codacy](#integration-with-codacy)
 - [Unit Testing with Robolectric](#unit-testing-with-robolectric)
 - [UI Testing with Espresso](#ui-testing-with-espresso)
+- [Integration with Travis CI](#integration-with-travis-ci)
+- [Integration with Codacy](#integration-with-codacy)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -44,14 +44,6 @@ Android app to show restaurant list from yelp.
 #### From command-line via Gradle
 You need to have andrid emulator already running for this command
 - To run all local unit tests in app module ```gradlew app:connectedAndroidTest```
-
-
-# Integration with [Travis CI](https://travis-ci.org/)
-Travis CI is a hosted continuous integration service. You can sign up with a GitHub account. It’s free for open source projects.
-You need to add ```.travis.yml``` configuration file for your project. If you want whenever a build succeeds, upload JaCoCo report to Codecov.
-
-# Integration with [Codacy](https://www.codacy.com/)
-Easy integration with git project. Just need to include ```.codecov.yml``` file and make appropriate changes in ```.travis.yml``` file to upload reports to Codecov
 
 # Unit Testing with [Robolectric](http://robolectric.org/)
 Robolectric is a testing framework that de-fangs the Android SDK so you can test-drive the development of your Android app.
@@ -84,4 +76,10 @@ The case construct for Espresso tests is the following:
   -  Finds the view
   -  Performs an action on the view
   -  Validates a assertion
+  
+# Integration with [Travis CI](https://travis-ci.org/)
+Travis CI is a hosted continuous integration service. You can sign up with a GitHub account. It’s free for open source projects.
+You need to add ```.travis.yml``` configuration file for your project. If you want whenever a build succeeds, upload JaCoCo report to Codecov.
 
+# Integration with [Codacy](https://www.codacy.com/)
+Easy integration with git project. Just need to include ```.codecov.yml``` file and make appropriate changes in ```.travis.yml``` file to upload reports to Codecov
