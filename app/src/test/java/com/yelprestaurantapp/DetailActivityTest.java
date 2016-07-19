@@ -98,9 +98,6 @@ public class DetailActivityTest {
 
 
         Review review = new Review();
-        review.setId("4MLX2uWNIa1stbQvvh3p4g");
-        review.setRating(5.0);
-        review.setRatingImgUrl("https://s3-media1.fl.yelpcdn.com/assets/2/www/img/f1def11e4e79/ico/stars/v1/stars_5.png");
         review.setExcerpt("Hubby and I came to Toronto for my birthday weekend in April. We were looking for Jamician cuisine and found Under The Table in the Yelp App. After reading...");
 
         Reviewer reviewer = new Reviewer();
@@ -109,7 +106,6 @@ public class DetailActivityTest {
         reviewer.setUserImageUrl("http://s3-media4.fl.yelpcdn.com/photo/s0gYYxKvoTsLYqzCHzmTmA/ms.jpg");
         review.setReviewer(reviewer);
 
-        review.setCreatedAt(1465754510L);
         restaurantDetail.setReview(review);
 
         return restaurantDetail;

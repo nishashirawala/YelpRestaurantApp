@@ -85,11 +85,7 @@ public class RestaurantService {
             JSONObject reviewJsonObj = reviewJsonArray.getJSONObject(0);
 
             Review review = new Review();
-            review.setId(reviewJsonObj.getString("id"));
             review.setExcerpt(reviewJsonObj.getString("excerpt"));
-            review.setRating(reviewJsonObj.getDouble("rating"));
-            review.setRatingImgUrl(reviewJsonObj.getString("rating_image_url"));
-            review.setCreatedAt(reviewJsonObj.getLong("time_created"));
 
             JSONObject userObj = reviewJsonObj.getJSONObject("user");
             Reviewer reviewer = new Reviewer();
