@@ -43,7 +43,7 @@ Android app to show restaurant list from yelp.
 
 #### From command-line via Gradle
 You need to have andrid emulator already running for this command
-- To run all local unit tests in app module ```gradlew app:connectedAndroidTest```
+- To run all local instrumentation tests in app module ```gradlew app:connectedAndroidTest``` or ```gradlew app:cAT```
 
 # Unit Testing with [Robolectric](http://robolectric.org/)
 Robolectric is a testing framework that de-fangs the Android SDK so you can test-drive the development of your Android app.
