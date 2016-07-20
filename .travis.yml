@@ -11,7 +11,7 @@ android:
         - android-23
 
         # Additional components
-        # - extra-google-m2repository
+        - extra-google-m2repository
         - extra-android-m2repository
 
         # Specify at least one system image,
@@ -19,7 +19,7 @@ android:
         - sys-img-armeabi-v7a-android-21
 
 # Emulator Management: Create, Start and Wait
-#before_script:
+before_script:
   - echo no | android create avd --force -n test -t android-21 --abi armeabi-v7a
   - emulator -avd test -no-skin -no-audio -no-window &
   - android-wait-for-emulator
@@ -28,8 +28,8 @@ android:
 
 script:
       - ./gradlew app:test jacocoTestDebugUnitTestReport
-      # - ./gradlew connectedCheck
-      - ./gradlew app:connectedAndroidTest
+      - ./gradlew connectedCheck
+      # - ./gradlew app:connectedAndroidTest
 
 before_install:
         - chmod +x gradlew
