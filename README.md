@@ -76,6 +76,7 @@ The case construct for Espresso tests is the following:
   -  Finds the view
   -  Performs an action on the view
   -  Validates a assertion
+  -  
   
 # Integration with [Travis CI](https://travis-ci.org/)
 Travis CI is a hosted continuous integration service. You can sign up with a GitHub account. It’s free for open source projects.
