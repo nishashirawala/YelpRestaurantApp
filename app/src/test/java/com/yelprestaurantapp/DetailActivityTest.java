@@ -90,12 +90,7 @@ public class DetailActivityTest {
         categoryList.add(new Category.CategoryBuilder().name("Comfort Food").alias("comfortfood").build());
         categoryList.add(new Category.CategoryBuilder().name("Breakfast & Brunch").alias("breakfast_brunch").build());
         restaurantDetail.setCategories(categoryList);
-
-        restaurantDetail.setDisplayAddress("568 Parliament St\n" +
-                "Cabbagetown\n" +
-                "Toronto, ON M4X 1P8\n" +
-                "Canada\n");
-
+        restaurantDetail.setDisplayAddress("568 Parliament St\n" + "Cabbagetown\n" + "Toronto, ON M4X 1P8\n" + "Canada\n");
 
         Review review = new Review();
         review.setExcerpt("Hubby and I came to Toronto for my birthday weekend in April. We were looking for Jamician cuisine and found Under The Table in the Yelp App. After reading...");
