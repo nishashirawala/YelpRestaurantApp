@@ -2,6 +2,8 @@ machine:
     environment:
 
 dependencies:
+     override:
+         - chmod +x gradlew
      pre:
           - echo y | android update sdk --no-ui --all --filter tools,platform-tools,extra-google-m2repository,extra-google-google_play_services,extra-android-support,android-23
           - echo y | android update sdk --no-ui --all --filter build-tools-23.0.3

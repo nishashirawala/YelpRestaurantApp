@@ -1,6 +1,9 @@
 sudo: false
 language: android
 jdk: oraclejdk8
+env:
+  global:
+    ADB_INSTALL_TIMEOUT=8 # minutes (2 minutes by default) - to avoid ShellCommandUnresponsiveException on travis
 android:
     components:
         - tools
