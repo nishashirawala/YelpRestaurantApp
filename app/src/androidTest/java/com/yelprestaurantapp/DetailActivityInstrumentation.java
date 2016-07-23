@@ -48,4 +48,18 @@ public class DetailActivityInstrumentation extends ActivityInstrumentationTestCa
         onView(allOf(withId(R.id.userName))).check(matches(isDisplayed()));
         onView(allOf(withId(R.id.reviewText))).check(matches(isDisplayed()));
     }
+
+    @Test
+    public void testDetailActivityLaunched_another_businessId() {
+        Intent intent = new Intent(mContext, DetailActivity.class);
+        intent.putExtra("businessId", "nazareth-restaurant-toronto");
+        launchActivityWithIntent("com.yelprestaurantapp", DetailActivity.class, intent);
+        onView(allOf(withId(R.id.detailLayout))).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.restaurantName))).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.restaurantAddress))).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.recommenedReviews))).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.userImage))).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.userName))).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.reviewText))).check(matches(isDisplayed()));
+    }
 }
