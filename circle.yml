@@ -23,4 +23,6 @@ test:
         - circle-android wait-for-boot
         - adb shell input keyevent 82
         # run tests  against the emulator.
-        - ./gradlew connectedDebugAndroidTest
+        - ADB_INSTALL_TIMEOUT=10 ./gradlew connectedAndroidTest
+                timeout: 360
+         
