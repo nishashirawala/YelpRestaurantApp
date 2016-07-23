@@ -60,9 +60,9 @@ public class SearchActivityInstrumentation extends ActivityTestRule<SearchActivi
             @Override
             public void run() {
                 searchTxt.requestFocus();
-                searchTxt.setText("ottawa");
+                searchTxt.setText("Ottawa");
                 limitTxt.requestFocus();
-                limitTxt.setText("15");
+                limitTxt.setText("19");
             }
         });
         onView(withId(R.id.searchBtn)).perform(click());
@@ -70,6 +70,29 @@ public class SearchActivityInstrumentation extends ActivityTestRule<SearchActivi
         onData(anyOf(is(instanceOf(Restaurant.class)))).atPosition(0).perform(click());
         verifyDetailViewElementsDisplayed();
     }
+
+
+    @Test
+    public void testSearchRestaurant_niagara() {
+        onView(allOf(withId(R.id.searchTxt))).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.limitTxt))).check(matches(isDisplayed()));
+        final EditText searchTxt = (EditText) mActivity.findViewById(R.id.searchTxt);
+        final EditText limitTxt = (EditText) mActivity.findViewById(R.id.limitTxt);
+        mActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                searchTxt.requestFocus();
+                searchTxt.setText("Niagara");
+                limitTxt.requestFocus();
+                limitTxt.setText("8");
+            }
+        });
+        onView(withId(R.id.searchBtn)).perform(click());
+        onView(allOf(withId(R.id.tableView))).check(matches(isDisplayed()));
+        onData(anyOf(is(instanceOf(Restaurant.class)))).atPosition(2).perform(click());
+        verifyDetailViewElementsDisplayed();
+    }
+
 
     private void verifyDetailViewElementsDisplayed() {
         onView(allOf(withId(R.id.detailLayout))).check(matches(isDisplayed()));
