@@ -51,7 +51,7 @@ public class SearchActivityInstrumentation extends ActivityTestRule<SearchActivi
     }
 
     @Test
-    public void testSearchRestaurant() {
+    public void testSearchRestaurantOttawa() {
         onView(allOf(withId(R.id.searchTxt))).check(matches(isDisplayed()));
         onView(allOf(withId(R.id.limitTxt))).check(matches(isDisplayed()));
         final EditText searchTxt = (EditText) mActivity.findViewById(R.id.searchTxt);
@@ -73,7 +73,7 @@ public class SearchActivityInstrumentation extends ActivityTestRule<SearchActivi
 
 
     @Test
-    public void testSearchRestaurant_niagara() {
+    public void testSearchRestaurantNiagara() {
         onView(allOf(withId(R.id.searchTxt))).check(matches(isDisplayed()));
         onView(allOf(withId(R.id.limitTxt))).check(matches(isDisplayed()));
         final EditText searchTxt = (EditText) mActivity.findViewById(R.id.searchTxt);

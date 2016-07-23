@@ -50,7 +50,7 @@ public class DetailActivityInstrumentation extends ActivityInstrumentationTestCa
     }
 
     @Test
-    public void testDetailActivityLaunched_another_businessId() {
+    public void testDetailActivityLaunchedNazareth() {
         Intent intent = new Intent(mContext, DetailActivity.class);
         intent.putExtra("businessId", "nazareth-restaurant-toronto");
         launchActivityWithIntent("com.yelprestaurantapp", DetailActivity.class, intent);
