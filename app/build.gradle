@@ -26,7 +26,7 @@ android {
       abortOnError false
 	}
     adbOptions { //  this is added to avoid ShellCommandUnresponsiveException
-        timeOutInMs 30 * 1000
+        timeOutInMs 600000
     }
 }
 jacocoAndroidUnitTestReport {
