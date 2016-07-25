@@ -1,6 +1,5 @@
 machine:
     environment:
-      ADB_INSTALL_TIMEOUT: 10
 
 dependencies:
      override:
@@ -24,5 +23,5 @@ test:
         - circle-android wait-for-boot
         - adb shell input keyevent 82
         # run tests  against the emulator.
-        - (./gradlew connectedAndroidTest --stacktrace --debug):
-            timeout: 1200
+        - ADB_INSTALL_TIMEOUT=10
+        - ./gradlew connectedAndroidTest --stacktrace --info
