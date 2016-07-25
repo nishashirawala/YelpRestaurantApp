@@ -16,7 +16,7 @@ test:
     override:
         - ./gradlew clean assembleDebug -PdisablePreDex
         - ./gradlew test -PdisablePreDex
-        - emulator -avd circleci-android21 -no-skin -no-audio -no-window:
+        - emulator -avd circleci-android19 -no-skin -no-audio -no-window:
              background: true
              parallel: true
         # wait for it to have booted
