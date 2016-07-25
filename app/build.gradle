@@ -25,6 +25,9 @@ android {
 	lintOptions {
       abortOnError false
 	}
+    adbOptions { //  this is added to avoid ShellCommandUnresponsiveException
+        timeOutInMs 30 * 1000
+    }
 }
 jacocoAndroidUnitTestReport {
     excludes += [ 'com.yelprestaurantapp.bean/*' ]
