@@ -16,11 +16,11 @@ test:
     override:
         - ./gradlew clean assembleDebug -PdisablePreDex
         - ./gradlew test -PdisablePreDex
-        - emulator -avd circleci-android19 -no-skin -no-audio -no-window:
+        - emulator -avd circleci-android21 -no-skin -no-audio -no-window:
              background: true
              parallel: true
         # wait for it to have booted
         - circle-android wait-for-boot
         - adb shell input keyevent 82
         # run tests  against the emulator.
-        - ADB_INSTALL_TIMEOUT=10 ./gradlew connectedAndroidTest --stacktrace --info
+        - ADB_INSTALL_TIMEOUT=8 ./gradlew connectedAndroidTest --stacktrace --info
