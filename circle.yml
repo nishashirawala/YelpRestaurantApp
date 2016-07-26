@@ -23,10 +23,5 @@ test:
         - circle-android wait-for-boot
         - sleep 30
         - adb shell input keyevent 82
-        # First download the bash script
-        - wget http://imgur.com/tools/imgurbash.sh
-        - chmod a+x imgurbash.sh
-        - adb shell screencap -p | sed 's/\r$//' > bootscreen.png
-        - ./imgurbash.sh bootscreen.png
         # run tests  against the emulator.
         - ADB_INSTALL_TIMEOUT=8 ./gradlew connectedAndroidTest --stacktrace --info
