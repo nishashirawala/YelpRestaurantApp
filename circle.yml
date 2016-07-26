@@ -1,7 +1,5 @@
 machine:
     environment:
-     TERM: "dumb"
-     GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"'
 
 dependencies:
      override:
@@ -26,4 +24,4 @@ test:
         - sleep 30
         - adb shell input keyevent 82
         # run tests  against the emulator.
-        - ADB_INSTALL_TIMEOUT=8 ./gradlew connectedAndroidTest -PdisablePreDex
+        - ADB_INSTALL_TIMEOUT=8 ./gradlew connectedAndroidTest --stacktrace --debug
