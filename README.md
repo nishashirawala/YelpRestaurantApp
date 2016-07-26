@@ -83,5 +83,8 @@ The case construct for Espresso tests is the following:
 Travis CI is a hosted continuous integration service. You can sign up with a GitHub account. It’s free for open source projects.
 You need to add ```.travis.yml``` configuration file for your project. If you want whenever a build succeeds, upload JaCoCo report to Codecov.
 
+If instrumentation tests fails with ShellCommandUnresponsiveException then increase timeout in .travis.xml 
+ ```- ADB_INSTALL_TIMEOUT=8 # minutes (2 minutes by default)```
+
 # Integration with [Codacy](https://www.codacy.com/)
 Easy integration with git project. Just need to include ```.codecov.yml``` file and make appropriate changes in ```.travis.yml``` file to upload reports to Codecov
