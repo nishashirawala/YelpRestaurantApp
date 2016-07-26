@@ -1,5 +1,7 @@
 machine:
     environment:
+     TERM: "dumb"
+     GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx2048m -XX:+HeapDumpOnOutOfMemoryError"'
 
 dependencies:
      override:
@@ -16,7 +18,7 @@ test:
     override:
         - ./gradlew clean assembleDebug -PdisablePreDex
         - ./gradlew test -PdisablePreDex
-        - emulator -avd circleci-android22 -no-skin -no-audio -no-window:
+        - emulator -avd circleci-android22 -no-audio -no-window:
              background: true
              parallel: true
         # wait for it to have booted
@@ -24,4 +26,4 @@ test:
         - sleep 30
         - adb shell input keyevent 82
         # run tests  against the emulator.
-        - ADB_INSTALL_TIMEOUT=8 ./gradlew connectedAndroidTest --stacktrace --info
+        - ADB_INSTALL_TIMEOUT=8 ./gradlew connectedAndroidTest -PdisablePreDex
