@@ -11,6 +11,7 @@ import android.test.suitebuilder.annotation.SmallTest;
 import com.yelprestaurantapp.bean.Restaurant;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -60,7 +61,7 @@ public class MainActivityInstrumentation extends ActivityInstrumentationTestCase
         verifyDetailViewElementsDisplayed();
     }
 
-    @Test
+    @Ignore
     public void testClickOnRestaurant() {
         Restaurant r = new Restaurant();
         r.setId("byblos-toronto-2");
