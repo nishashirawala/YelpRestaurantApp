@@ -49,7 +49,7 @@ public class MainActivityInstrumentation extends ActivityInstrumentationTestCase
 
     @Test
     public void testTableViewDisplayed() {
-        onView(allOf(withId(R.id.tableView))).check(matches(isDisplayed()));
+        onView(withId(R.id.tableView)).check(matches(isDisplayed()));
     }
 
     @Test
@@ -83,12 +83,11 @@ public class MainActivityInstrumentation extends ActivityInstrumentationTestCase
 
     private void verifyDetailViewElementsDisplayed() {
         onView(withId(R.id.detailLayout)).check(matches(isDisplayed()));
-        onView(allOf(withId(R.id.detailLayout))).check(matches(isDisplayed()));
-        onView(allOf(withId(R.id.restaurantName))).check(matches(isDisplayed()));
-        onView(allOf(withId(R.id.restaurantAddress))).check(matches(isDisplayed()));
-        onView(allOf(withId(R.id.recommenedReviews))).check(matches(isDisplayed()));
-        onView(allOf(withId(R.id.userImage))).check(matches(isDisplayed()));
-        onView(allOf(withId(R.id.userName))).check(matches(isDisplayed()));
-        onView(allOf(withId(R.id.reviewText))).check(matches(isDisplayed()));
+        onView(withId(R.id.restaurantName)).check(matches(isDisplayed()));
+        onView(withId(R.id.restaurantAddress)).check(matches(isDisplayed()));
+        onView(withId(R.id.recommenedReviews)).check(matches(isDisplayed()));
+        onView(withId(R.id.userImage)).check(matches(isDisplayed()));
+        onView(withId(R.id.userName)).check(matches(isDisplayed()));
+        onView(withId(R.id.reviewText)).check(matches(isDisplayed()));
     }
 }
