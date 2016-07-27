@@ -53,7 +53,7 @@ public class MainActivityInstrumentation extends ActivityInstrumentationTestCase
     }
 
     @Test
-    public void testClickOnAllRestaurants() {
+    public void testClickOnRestaurants() {
         onData(anyOf(is(instanceOf(Restaurant.class)))).atPosition(0).perform(click());
         verifyDetailViewElementsDisplayed();
         pressBack();
@@ -82,6 +82,7 @@ public class MainActivityInstrumentation extends ActivityInstrumentationTestCase
     }
 
     private void verifyDetailViewElementsDisplayed() {
+        onView(withId(R.id.detailLayout)).check(matches(isDisplayed()));
         onView(allOf(withId(R.id.detailLayout))).check(matches(isDisplayed()));
         onView(allOf(withId(R.id.restaurantName))).check(matches(isDisplayed()));
         onView(allOf(withId(R.id.restaurantAddress))).check(matches(isDisplayed()));
