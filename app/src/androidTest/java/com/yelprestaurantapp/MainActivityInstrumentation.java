@@ -11,7 +11,6 @@ import android.test.suitebuilder.annotation.SmallTest;
 import com.yelprestaurantapp.bean.Restaurant;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -42,7 +41,7 @@ public class MainActivityInstrumentation extends ActivityInstrumentationTestCase
         Context mContext = getInstrumentation().getContext();
         Intent intent = new Intent(mContext, MainActivity.class);
         intent.putExtra("searchLocation", "toronto");
-        intent.putExtra("searchLimit", "15");
+        intent.putExtra("searchLimit", "20");
         launchActivityWithIntent("com.yelprestaurantapp", MainActivity.class, intent);
         super.setUp();
     }
@@ -53,7 +52,7 @@ public class MainActivityInstrumentation extends ActivityInstrumentationTestCase
     }
 
     @Test
-    public void testClickOnRestaurants() {
+    public void testClickOnRestaurantsByPosition() {
         onData(anyOf(is(instanceOf(Restaurant.class)))).atPosition(0).perform(click());
         verifyDetailViewElementsDisplayed();
         pressBack();
@@ -61,23 +60,12 @@ public class MainActivityInstrumentation extends ActivityInstrumentationTestCase
         verifyDetailViewElementsDisplayed();
     }
 
-    @Ignore
-    public void testClickOnRestaurant() {
+    @Test
+    public void testClickOnRestaurantByName() {
         Restaurant r = new Restaurant();
-        r.setId("byblos-toronto-2");
-        onData(allOf(is(instanceOf(Restaurant.class)), is(r))).perform(click());
-        verifyDetailViewElementsDisplayed();
-
-        onView(allOf(withId(R.id.restaurantName))).check(matches(withText("Byblos")));
-        onView(allOf(withId(R.id.restaurantAddress))).check(matches(withText("11 Duncan Street\n" + "Downtown Core\n" + "Toronto, ON M5V 3M2\n" + "Canada\n")));
-        onView(allOf(withId(R.id.overallRatingTextView))).check(matches(withText("Overall Rating")));
-
-        pressBack();
-
         r.setId("under-the-table-restaurant-toronto");
         onData(allOf(is(instanceOf(Restaurant.class)), is(r))).perform(click());
         verifyDetailViewElementsDisplayed();
-
         onView(allOf(withId(R.id.restaurantName))).check(matches(withText("Under The Table Restaurant")));
     }
 
