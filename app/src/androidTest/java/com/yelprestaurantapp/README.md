@@ -20,3 +20,11 @@
         Example:  ```onView(withId(R.id.my_button));```
  2. Action API
  3. UI thread synchronization
+ 
+ - Setup activity
+ -- ActivityTestRule :  ```public ActivityTestRule mActivityRule = new ActivityTestRule<>(SearchActivity.class);```
+ -- LaunchActivity With Intent 
+     ```    Intent intent = new Intent(mContext, MainActivity.class);
+            intent.putExtra("searchLocation", "toronto");
+            intent.putExtra("searchLimit", "20");
+            launchActivityWithIntent("com.yelprestaurantapp", MainActivity.class, intent);```
