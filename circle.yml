@@ -12,7 +12,7 @@ dependencies:
 test:
     override:
         - ./gradlew clean assembleDebug -PdisablePreDex
-        - ./gradlew test -PdisablePreDex
+        - ./gradlew test -PdisablePreDex jacocoTestDebugUnitTestReport
         - emulator -avd circleci-android22 -no-audio -no-window:
              background: true
              parallel: true
