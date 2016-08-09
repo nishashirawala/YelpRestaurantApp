@@ -21,20 +21,24 @@
 - Espresso API works with android 2.2 (api level 8) or higher
 - Key features
  1. [View Matching] (https://developer.android.com/topic/libraries/testing-support-library/index.html#espresso-matching)
-     - [Espresso.onView()](https://developer.android.com/reference/android/support/test/espresso/Espresso.html#onView(org.hamcrest.Matcher<android.view.View>)) method accepts a matcher argument and search in the view hieararchy
-      The class name of the view
-      The content description of the view
-      The R.id of the view
-      Text displayed in the view
-        Example:  ```onView(withId(R.id.my_button));```
+     - [Espresso.onView()](https://developer.android.com/reference/android/support/test/espresso/Espresso.html#onView(org.hamcrest.Matcher<android.view.View>)) method accepts a matcher argument and search in the view hieararchy  
+            The class name of the view  
+            The content description of the view  
+            The R.id of the view  
+            Text displayed in the view  
+            Example:  ```onView(withId(R.id.my_button));```
  2. Action API
  3. UI thread synchronization
  
 - Setup activity
    - ActivityTestRule [example](https://github.com/nishashirawala/YelpRestaurantApp/blob/master/app/src/androidTest/java/com/yelprestaurantapp/SearchActivityInstrumentation.java) 
+   
    ```public ActivityTestRule mActivityRule = new ActivityTestRule<>(SearchActivity.class);```
+
    - LaunchActivity With Intent [example] (https://github.com/nishashirawala/YelpRestaurantApp/blob/master/app/src/androidTest/java/com/yelprestaurantapp/MainActivityInstrumentation.java)
-   ``` Intent intent = new Intent(mContext, MainActivity.class);
-            intent.putExtra("searchLocation", "toronto");
-            intent.putExtra("searchLimit", "20");
-            launchActivityWithIntent("com.yelprestaurantapp", MainActivity.class, intent);```
+   
+   ``` Intent intent = new Intent(mContext, MainActivity.class); 
+      intent.putExtra("searchLocation", "toronto");  
+      intent.putExtra("searchLimit", "20");  
+      launchActivityWithIntent("com.yelprestaurantapp", MainActivity.class, intent);```
+
