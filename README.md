@@ -7,11 +7,12 @@
     - [UnitTesting](#unittesting)
       - [In Android Studio](#in-android-studio)
       - [From command-line via Gradle](#from-command-line-via-gradle)
-    - [Instrumentation Tests](#instrumentation-tests0)
+    - [Instrumentation Tests](#instrumentation-tests)
       - [In Android Studio](#in-android-studio-1)
       - [From command-line via Gradle](#from-command-line-via-gradle-1)
 - [Unit Testing with Robolectric](#unit-testing-with-robolectric)
 - [UI Testing with Espresso](#ui-testing-with-espresso)
+- [Integration with Circle CI](#integration-with-circle-ci)
 - [Integration with Travis CI](#integration-with-travis-ci)
 - [Integration with Codacy](#integration-with-codacy)
 

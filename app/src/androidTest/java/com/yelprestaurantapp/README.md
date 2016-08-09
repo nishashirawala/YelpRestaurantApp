@@ -1,3 +1,12 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Android Testing Library](#android-testing-library)
+- [Instrument Tests Using Espresso](#instrument-tests-using-espresso)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Android Testing Library
 - Android testing support library provides various APIs that allow you to quickly build and run test code for your apps, including JUnit 4 and functional UI tests. The library includes the following instrumentation-based APIs that are useful when you want to automate your tests:
 - [AndroidJUnitRunner] (https://developer.android.com/topic/libraries/testing-support-library/index.html#AndroidJUnitRunner)
