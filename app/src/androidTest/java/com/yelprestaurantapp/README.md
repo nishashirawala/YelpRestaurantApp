@@ -27,8 +27,11 @@
             The R.id of the view  
             Text displayed in the view  
             Example:  `onView(withId(R.id.my_button));`
- 2. Action API
- 3. UI thread synchronization
+ 2. [Action APIs] (https://developer.android.com/topic/libraries/testing-support-library/index.html#espresso-actions)
+      - Perform UI interactions such as View Clicks, Swipes, Key and Button press, Typing text, Open a link.
+      - Example : `onView(withId(R.id.changeTextBt)).perform(click());`
+ 3. [UI thread synchronization](https://developer.android.com/topic/libraries/testing-support-library/index.html#espresso-thread-sync)
+      -  The Espresso testing framework handles synchronization between the Instrumentation and the UI thread; this removes the need for the previous timing workarounds and ensures that your test actions and assertions run more reliably.
  
 - Setup activity
    - ActivityTestRule [example](https://github.com/nishashirawala/YelpRestaurantApp/blob/master/app/src/androidTest/java/com/yelprestaurantapp/SearchActivityInstrumentation.java) 
