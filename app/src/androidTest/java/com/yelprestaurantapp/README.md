@@ -26,19 +26,21 @@
             The content description of the view  
             The R.id of the view  
             Text displayed in the view  
-            Example:  ```onView(withId(R.id.my_button));```
+            Example:  `onView(withId(R.id.my_button));`
  2. Action API
  3. UI thread synchronization
  
 - Setup activity
    - ActivityTestRule [example](https://github.com/nishashirawala/YelpRestaurantApp/blob/master/app/src/androidTest/java/com/yelprestaurantapp/SearchActivityInstrumentation.java) 
    
-   ```public ActivityTestRule mActivityRule = new ActivityTestRule<>(SearchActivity.class);```
+    `public ActivityTestRule mActivityRule = new ActivityTestRule<>(SearchActivity.class);`
 
    - LaunchActivity With Intent [example] (https://github.com/nishashirawala/YelpRestaurantApp/blob/master/app/src/androidTest/java/com/yelprestaurantapp/MainActivityInstrumentation.java)
    
-   ``` Intent intent = new Intent(mContext, MainActivity.class); 
-      intent.putExtra("searchLocation", "toronto");  
-      intent.putExtra("searchLimit", "20");  
-      launchActivityWithIntent("com.yelprestaurantapp", MainActivity.class, intent);```
+   ``` 
+      Intent intent = new Intent(mContext, MainActivity.class);
+      intent.putExtra("searchLocation", "toronto");
+      intent.putExtra("searchLimit", "20");
+      launchActivityWithIntent("com.yelprestaurantapp", MainActivity.class, intent);
+   ```
 
