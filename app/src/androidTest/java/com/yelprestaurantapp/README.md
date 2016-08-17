@@ -39,7 +39,6 @@
     `public ActivityTestRule mActivityRule = new ActivityTestRule<>(SearchActivity.class);`
 
    - LaunchActivity With Intent [example] (https://github.com/nishashirawala/YelpRestaurantApp/blob/master/app/src/androidTest/java/com/yelprestaurantapp/MainActivityInstrumentation.java)
-   
    ``` 
       Intent intent = new Intent(mContext, MainActivity.class);
       intent.putExtra("searchLocation", "toronto");
