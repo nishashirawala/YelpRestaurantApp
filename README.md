@@ -91,4 +91,4 @@ If instrumentation tests fails with ShellCommandUnresponsiveException then incre
  ```- ADB_INSTALL_TIMEOUT=8 # minutes (2 minutes by default)```
 
 # Integration with [Codacy](https://www.codacy.com/)
-Easy integration with git project. Just need to include ```.codecov.yml``` file and make appropriate changes in ```.travis.yml``` file to upload reports to Codecov
+Easy integration with git project. Just need to include ```.codecov.yml``` file and make appropriate changes in ```.travis.yml``` or ```circle.yml``` file to upload reports to Codecov
